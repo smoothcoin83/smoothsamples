@@ -59,20 +59,23 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   padding: 0 0 22px;
 }
 
 .utility-bar {
   display: grid;
-  grid-template-columns: minmax(210px, 280px) minmax(220px, 360px) auto auto;
+  grid-template-columns: minmax(180px, 1fr) minmax(320px, 540px) minmax(180px, 1fr);
+  grid-template-areas:
+    ". logo ."
+    "links search cart";
   align-items: center;
-  gap: 14px;
+  gap: 10px 16px;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding: 14px 32px 12px;
-  min-height: 78px;
+  padding: 10px 32px 10px;
+  min-height: 0;
   border-radius: 0;
   border-top: 0;
   border-left: 0;
@@ -86,27 +89,29 @@ button {
 }
 
 .utility-logo {
+  grid-area: logo;
   display: flex;
-  align-items: flex-end;
-  align-self: center;
-  justify-self: start;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
   text-decoration: none;
-  transform: translateY(8px);
+  transform: none;
 }
 
 .utility-logo-image {
   display: block;
-  width: min(100%, 238px);
+  width: min(100%, 196px);
   height: auto;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.28));
 }
 
 .search-bar {
+  grid-area: search;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   min-height: 40px;
-  max-width: 360px;
+  max-width: 540px;
   width: 100%;
   justify-self: center;
   border-radius: 10px;
@@ -118,12 +123,12 @@ button {
 .search-bar input {
   width: 100%;
   min-width: 0;
-  padding: 0 12px;
+  padding: 0 14px;
   border: 0;
   background: rgba(255, 255, 255, 0.94);
   color: #1b1112;
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 .search-bar input::placeholder {
@@ -135,13 +140,13 @@ button {
 }
 
 .search-bar button {
-  min-width: 78px;
+  min-width: 84px;
   height: 100%;
   border: 0;
   background: linear-gradient(180deg, var(--gold), #a97922);
   color: #160e0f;
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -149,17 +154,18 @@ button {
 }
 
 .utility-links {
+  grid-area: links;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 .utility-links a {
   color: rgba(248, 242, 239, 0.82);
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   transition: color 0.2s ease;
 }
 
@@ -168,14 +174,14 @@ button {
 }
 
 .cart-pill {
-  display: grid;
-  grid-template-columns: auto auto auto;
+  grid-area: cart;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(196, 146, 47, 0.24);
-  background: rgba(255, 255, 255, 0.06);
+  gap: 8px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(196, 146, 47, 0.18);
+  background: rgba(255, 255, 255, 0.05);
   color: #f8f2ef;
   text-decoration: none;
   justify-self: end;
@@ -183,22 +189,21 @@ button {
 
 .cart-total {
   font-family: var(--font-display);
-  font-size: 1.16rem;
+  font-size: 0.9rem;
   font-weight: 800;
 }
 
 .cart-meta {
   color: rgba(248, 242, 239, 0.74);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
 }
 
 .cart-pill strong {
-  padding: 9px 13px;
-  border-radius: 10px;
-  background: linear-gradient(180deg, #d0a144, var(--gold));
-  color: #180f10;
+  padding-left: 8px;
+  border-left: 1px solid rgba(196, 146, 47, 0.22);
+  color: var(--gold-soft);
   font-family: var(--font-display);
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1272,19 +1277,14 @@ button {
 
   .utility-bar {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "search"
+      "links"
+      "cart";
     padding: 18px 20px;
     min-height: auto;
     gap: 12px;
-  }
-
-  .catalog-controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .utility-logo,
-  .search-bar {
-    justify-self: stretch;
   }
 
   .utility-logo-image {
@@ -1292,12 +1292,12 @@ button {
   }
 
   .utility-links {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .cart-pill {
-    justify-self: stretch;
-    grid-template-columns: 1fr auto auto;
+    justify-content: center;
+    justify-self: center;
   }
 
   .site-nav {
@@ -1311,6 +1311,11 @@ button {
 
   .promo-item {
     text-align: left;
+  }
+
+  .catalog-controls {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .sort-control {
@@ -1368,7 +1373,7 @@ button {
 
   .utility-links {
     gap: 10px;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .utility-links a {
@@ -1376,14 +1381,15 @@ button {
   }
 
   .cart-pill {
-    grid-template-columns: 1fr;
-    justify-items: start;
     gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-self: stretch;
   }
 
   .cart-pill strong {
-    width: 100%;
-    text-align: center;
+    border-left: 0;
+    padding-left: 0;
   }
 
   .header-tools {
@@ -1518,6 +1524,10 @@ button {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px 10px;
+  }
+
+  .utility-links a {
+    text-align: center;
   }
 
   .cart-total {
