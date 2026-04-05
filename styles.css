@@ -45,35 +45,74 @@ a {
 
 .site-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 24px 0 8px;
+  gap: 12px;
+  padding: 12px 0 18px;
+}
+
+.header-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: center;
 }
 
 .header-tools {
   display: flex;
-  align-items: center;
-  gap: 18px;
+  width: 100%;
+  justify-content: center;
 }
 
 .brand {
-  display: inline-flex;
-  align-items: center;
+  display: block;
+  width: min(100%, 1120px);
 }
 
 .brand-logo {
-  width: clamp(170px, 22vw, 230px);
+  width: 100%;
   height: auto;
   display: block;
   filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.22));
 }
 
+.brand-note,
+.header-kicker {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.brand-note {
+  margin-top: 2px;
+  max-width: 62ch;
+  font-size: 1rem;
+}
+
+.header-kicker {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 18px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.64);
+  box-shadow: var(--shadow);
+  max-width: 720px;
 }
 
 .site-nav a {
@@ -97,7 +136,7 @@ a {
 }
 
 .page {
-  padding: 18px 0 56px;
+  padding: 6px 0 56px;
 }
 
 .hero,
@@ -113,15 +152,15 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
   gap: 24px;
-  padding: 36px;
-  border-radius: 28px;
+  padding: 28px 30px;
+  border-radius: 24px;
 }
 
 .hero-copy h1 {
   margin: 0;
-  max-width: 12ch;
-  font-size: clamp(2.6rem, 5vw, 4.8rem);
-  line-height: 0.97;
+  max-width: 14ch;
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  line-height: 1.02;
 }
 
 .eyebrow {
@@ -146,12 +185,12 @@ a {
 
 .lead {
   max-width: 60ch;
-  margin: 18px 0 0;
-  font-size: 1.08rem;
+  margin: 16px 0 0;
+  font-size: 1rem;
 }
 
 .actions {
-  margin-top: 28px;
+  margin-top: 22px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -193,8 +232,8 @@ a {
 }
 
 .hero-panel {
-  padding: 22px;
-  border-radius: 22px;
+  padding: 20px;
+  border-radius: 20px;
   border: 1px solid rgba(96, 22, 33, 0.08);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(245, 243, 240, 0.78)),
@@ -304,6 +343,32 @@ a {
 .pack-card {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 18px 34px rgba(34, 20, 22, 0.08);
+}
+
+.pack-visual {
+  height: 170px;
+  margin: -22px -22px 18px;
+  border-bottom: 1px solid rgba(96, 22, 33, 0.08);
+}
+
+.pack-visual-trap {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.12), transparent 20%),
+    linear-gradient(135deg, rgba(70, 10, 18, 0.96), rgba(166, 31, 45, 0.92));
+}
+
+.pack-visual-lofi {
+  background:
+    radial-gradient(circle at 75% 30%, rgba(255, 255, 255, 0.16), transparent 18%),
+    linear-gradient(135deg, rgba(196, 146, 47, 0.78), rgba(120, 46, 34, 0.82));
+}
+
+.pack-visual-house {
+  background:
+    radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.16), transparent 18%),
+    linear-gradient(135deg, rgba(125, 17, 31, 0.9), rgba(33, 22, 30, 0.96));
 }
 
 .pack-card h3,
@@ -333,6 +398,10 @@ a {
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--text);
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(196, 146, 47, 0.14);
+  border: 1px solid rgba(196, 146, 47, 0.18);
 }
 
 .pack-meta {
@@ -411,6 +480,10 @@ a {
   color: var(--accent);
   font-weight: 700;
   text-decoration: none;
+}
+
+.pack-actions a:last-child {
+  color: var(--text);
 }
 
 .release-grid {
@@ -638,6 +711,7 @@ a {
 }
 
 @media (max-width: 900px) {
+  .site-header,
   .hero,
   .preview-panel,
   .bundle-panel,
@@ -658,20 +732,9 @@ a {
 }
 
 @media (max-width: 700px) {
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 20px;
-  }
-
   .header-tools {
     width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .site-nav {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .section,
@@ -685,6 +748,10 @@ a {
   }
 
   .btn {
+    width: 100%;
+  }
+
+  .brand-logo {
     width: 100%;
   }
 

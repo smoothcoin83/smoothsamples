@@ -9,17 +9,33 @@
       content="Discover premium sample packs across multiple genres with fast browsing and instant audio previews."
     />
     <link rel="stylesheet" href="./styles.css" />
+    <script>
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    </script>
   </head>
   <body>
     <div class="site-shell">
       <header class="site-header">
-        <a class="brand" href="#" aria-label="Smooth Samples home">
-          <img
-            class="brand-logo"
-            src="./assets/logo/smooth-samples-logo.svg"
-            alt="Smooth Samples logo"
-          />
-        </a>
+        <div class="header-branding">
+          <p class="header-kicker">Curated sounds. Instant previews. Cleaner discovery.</p>
+          <a class="brand" href="#" aria-label="Smooth Samples home">
+            <img
+              class="brand-logo"
+              src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png"
+              alt="Smooth Samples logo"
+            />
+          </a>
+          <p class="brand-note">
+            Premium sample packs for hip hop, house, lo-fi, drill, and modern
+            beat production.
+          </p>
+        </div>
+
+        <div class="header-actions">
+          <a class="header-cta" href="#contact">Sign In</a>
+        </div>
 
         <div class="header-tools">
           <nav class="site-nav" aria-label="Main navigation">
@@ -29,19 +45,18 @@
             <a href="#bundles">Bundles</a>
             <a href="#preview-experience">Previews</a>
           </nav>
-          <a class="header-cta" href="#contact">Sign In</a>
         </div>
       </header>
 
       <main class="page">
         <section class="hero">
           <div class="hero-copy">
-            <p class="eyebrow">Built for modern producers</p>
-            <h1>Sample packs that sound polished before your track is finished.</h1>
+            <p class="eyebrow">Featured Experience</p>
+            <h1>Find the right pack fast, preview it instantly, and stay in the creative flow.</h1>
             <p class="lead">
-              Explore curated sounds for trap, lo-fi, house, drill, and more.
-              Smooth Samples helps producers discover premium packs fast, preview
-              them instantly, and find the right vibe without friction.
+              Smooth Samples is now presented more like a real storefront:
+              curated highlights, clear product sections, fast genre browsing,
+              and immediate preview access without clutter.
             </p>
             <div class="actions">
               <a class="btn btn-primary" href="#featured-packs">
@@ -54,12 +69,12 @@
           </div>
 
           <aside class="hero-panel" aria-label="Store highlights">
-            <p class="panel-label">Browse the catalog</p>
+            <p class="panel-label">Store snapshot</p>
             <div class="category-links">
-              <a href="#genres">Trap Essentials</a>
-              <a href="#genres">House Grooves</a>
-              <a href="#genres">Lo-Fi Textures</a>
-              <a href="#bundles">Producer Bundles</a>
+              <a href="#featured-packs">Featured picks</a>
+              <a href="#new-arrivals">Latest releases</a>
+              <a href="#genres">Genre shortcuts</a>
+              <a href="#bundles">Bundle offers</a>
             </div>
             <div class="stat-card">
               <strong>120+</strong>
@@ -96,6 +111,7 @@
 
           <div class="pack-grid">
             <article class="pack-card">
+              <div class="pack-visual pack-visual-trap" aria-hidden="true"></div>
               <div class="pack-card-top">
                 <p class="pack-tag">Trap</p>
                 <p class="pack-price">$29</p>
@@ -126,6 +142,7 @@
             </article>
 
             <article class="pack-card">
+              <div class="pack-visual pack-visual-lofi" aria-hidden="true"></div>
               <div class="pack-card-top">
                 <p class="pack-tag">Lo-Fi</p>
                 <p class="pack-price">$24</p>
@@ -156,6 +173,7 @@
             </article>
 
             <article class="pack-card">
+              <div class="pack-visual pack-visual-house" aria-hidden="true"></div>
               <div class="pack-card-top">
                 <p class="pack-tag">House</p>
                 <p class="pack-price">$32</p>
