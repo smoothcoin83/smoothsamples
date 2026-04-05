@@ -177,6 +177,10 @@ button {
   box-shadow: 0 24px 40px rgba(23, 15, 16, 0.18);
 }
 
+.search-suggestions[hidden] {
+  display: none;
+}
+
 .search-suggestion-list {
   display: grid;
 }
@@ -458,6 +462,10 @@ button {
   font-weight: 700;
 }
 
+.trail-home {
+  margin-bottom: 0;
+}
+
 .catalog-jumpbar {
   display: flex;
   flex-wrap: wrap;
@@ -734,7 +742,7 @@ button {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 18px;
+  margin-top: 10px;
 }
 
 .catalog-strip a {
