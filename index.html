@@ -16,7 +16,7 @@
     </script>
   </head>
   <body>
-    <div class="site-shell">
+    <div class="site-shell" id="top">
       <header class="site-header">
         <div class="utility-bar" aria-label="Store utilities">
           <a class="utility-logo" href="#" aria-label="Smooth Samples home">
@@ -162,13 +162,16 @@
         </section>
 
         <section class="section" id="featured-packs">
-          <div class="section-heading">
-            <p class="eyebrow">Featured Packs</p>
-            <h2>Top collections for immediate inspiration.</h2>
-            <p>
-              A cleaner storefront can still feel rich and commercial when the
-              most important products are organized clearly.
-            </p>
+          <div class="section-heading-row">
+            <div class="section-heading">
+              <p class="eyebrow">Featured Packs</p>
+              <h2>Top collections for immediate inspiration.</h2>
+              <p>
+                A cleaner storefront can still feel rich and commercial when the
+                most important products are organized clearly.
+              </p>
+            </div>
+            <a class="section-link" href="#popular-now">View More Picks</a>
           </div>
 
           <div class="pack-grid">
@@ -280,13 +283,16 @@
         </section>
 
         <section class="section compact-catalog-section" id="popular-now">
-          <div class="section-heading">
-            <p class="eyebrow">Popular Right Now</p>
-            <h2>A denser product grid that feels closer to a real storefront.</h2>
-            <p>
-              This section gives the homepage a stronger catalog rhythm, closer
-              to what users expect from a sample shop.
-            </p>
+          <div class="section-heading-row">
+            <div class="section-heading">
+              <p class="eyebrow">Popular Right Now</p>
+              <h2>A denser product grid that feels closer to a real storefront.</h2>
+              <p>
+                This section gives the homepage a stronger catalog rhythm, closer
+                to what users expect from a sample shop.
+              </p>
+            </div>
+            <a class="section-link" href="#new-arrivals">See New Arrivals</a>
           </div>
 
           <div class="catalog-controls" aria-label="Catalog controls">
@@ -385,9 +391,12 @@
         </section>
 
         <section class="section" id="new-arrivals">
-          <div class="section-heading">
-            <p class="eyebrow">New Arrivals</p>
-            <h2>Recent drops, kept easy to scan.</h2>
+          <div class="section-heading-row">
+            <div class="section-heading">
+              <p class="eyebrow">New Arrivals</p>
+              <h2>Recent drops, kept easy to scan.</h2>
+            </div>
+            <a class="section-link" href="#featured-packs">Browse Featured</a>
           </div>
 
           <div class="release-grid">
@@ -447,13 +456,16 @@
         </section>
 
         <section class="section genre-section" id="genres">
-          <div class="section-heading">
-            <p class="eyebrow">Genres</p>
-            <h2>Jump straight into the sound you want.</h2>
-            <p>
-              This section gives the site a stronger store feeling, similar to
-              large sample marketplaces but with less visual clutter.
-            </p>
+          <div class="section-heading-row">
+            <div class="section-heading">
+              <p class="eyebrow">Genres</p>
+              <h2>Jump straight into the sound you want.</h2>
+              <p>
+                This section gives the site a stronger store feeling, similar to
+                large sample marketplaces but with less visual clutter.
+              </p>
+            </div>
+            <a class="section-link" href="#popular-now">See Popular Packs</a>
           </div>
 
           <div class="genre-list" aria-label="Music genres">
@@ -464,12 +476,18 @@
             <span>R&B</span>
             <span>Cinematic</span>
           </div>
+          <div class="genre-actions">
+            <a class="btn btn-secondary" href="#featured-packs">Browse Genre Packs</a>
+          </div>
         </section>
 
         <section class="section bundle-section" id="bundles">
-          <div class="section-heading">
-            <p class="eyebrow">Bundles</p>
-            <h2>Higher value, cleaner presentation.</h2>
+          <div class="section-heading-row">
+            <div class="section-heading">
+              <p class="eyebrow">Bundles</p>
+              <h2>Higher value, cleaner presentation.</h2>
+            </div>
+            <a class="section-link" href="#preview-experience">How previews work</a>
           </div>
 
           <div class="bundle-panel">
@@ -489,9 +507,12 @@
         </section>
 
         <section class="section benefits-section">
-          <div class="section-heading">
-            <p class="eyebrow">Why Smooth Samples</p>
-            <h2>A cleaner buying experience for music producers.</h2>
+          <div class="section-heading-row">
+            <div class="section-heading">
+              <p class="eyebrow">Why Smooth Samples</p>
+              <h2>A cleaner buying experience for music producers.</h2>
+            </div>
+            <a class="section-link" href="#contact">Request Access</a>
           </div>
 
           <div class="benefit-grid">
@@ -522,13 +543,16 @@
         </section>
 
         <section class="section preview-section" id="preview-experience">
-          <div class="section-heading">
-            <p class="eyebrow">Preview Experience</p>
-            <h2>Listen before you commit.</h2>
-            <p>
-              The final version can include protected preview playback, short
-              audio snippets, and catalog browsing without login.
-            </p>
+          <div class="section-heading-row">
+            <div class="section-heading">
+              <p class="eyebrow">Preview Experience</p>
+              <h2>Listen before you commit.</h2>
+              <p>
+                The final version can include protected preview playback, short
+                audio snippets, and catalog browsing without login.
+              </p>
+            </div>
+            <a class="section-link" href="#contact">Learn More</a>
           </div>
 
           <div class="preview-panel">
@@ -575,7 +599,10 @@
             This direction keeps the commercial structure of a larger sample
             store, but presents it in a cleaner and more modern way.
           </p>
-          <a class="btn btn-secondary" href="#featured-packs">Explore the Layout</a>
+          <div class="cta-actions">
+            <a class="btn btn-secondary" href="#featured-packs">Explore the Layout</a>
+            <a class="btn btn-primary" href="#top">Back to Top</a>
+          </div>
         </section>
       </main>
 

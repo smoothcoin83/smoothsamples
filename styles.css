@@ -227,6 +227,16 @@ button {
   align-items: center;
   text-align: center;
   gap: 6px;
+  width: 100%;
+  padding: 26px 24px;
+  border-radius: 26px;
+  border: 1px solid rgba(196, 146, 47, 0.16);
+  background:
+    linear-gradient(180deg, rgba(12, 8, 9, 0.7), rgba(12, 8, 9, 0.82)),
+    radial-gradient(circle at center, rgba(166, 31, 45, 0.08), transparent 46%),
+    url("./assets/header/header-bg-808.jpg") center/cover no-repeat;
+  box-shadow: 0 26px 54px rgba(20, 12, 13, 0.16);
+  background-blend-mode: normal, screen, multiply;
 }
 
 .header-tools {
@@ -245,7 +255,7 @@ button {
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.22));
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.28));
   transition: transform 0.35s ease, filter 0.35s ease;
 }
 
@@ -266,13 +276,15 @@ button {
   max-width: 62ch;
   font-size: 0.98rem;
   letter-spacing: 0.01em;
+  color: rgba(255, 247, 244, 0.88);
 }
 
 .header-kicker {
   padding: 7px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(96, 22, 33, 0.1);
-  background: rgba(255, 255, 255, 0.46);
+  border: 1px solid rgba(196, 146, 47, 0.22);
+  background: rgba(19, 12, 13, 0.46);
+  color: rgba(255, 247, 244, 0.82);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -765,6 +777,32 @@ button {
   margin: 14px 0 0;
 }
 
+.section-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.section-link {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.section-link:hover {
+  color: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
 .pack-grid,
 .benefit-grid {
   display: grid;
@@ -1079,6 +1117,10 @@ button {
   font-weight: 600;
 }
 
+.genre-actions {
+  margin-top: 18px;
+}
+
 .bundle-panel {
   display: flex;
   align-items: center;
@@ -1239,7 +1281,11 @@ button {
   margin: 16px auto 0;
 }
 
-.cta-section .btn {
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
   margin-top: 24px;
 }
 
@@ -1318,6 +1364,11 @@ button {
     align-items: stretch;
   }
 
+  .section-heading-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .sort-control {
     justify-content: space-between;
   }
@@ -1339,6 +1390,8 @@ button {
 
   .header-branding {
     gap: 4px;
+    padding: 20px 14px;
+    border-radius: 20px;
   }
 
   .header-kicker {
@@ -1506,6 +1559,10 @@ button {
     text-align: center;
   }
 
+  .cta-actions {
+    flex-direction: column;
+  }
+
   .site-shell {
     width: min(100% - 24px, 1200px);
   }
@@ -1550,6 +1607,10 @@ button {
   .section,
   .hero {
     padding: 20px 16px;
+  }
+
+  .header-branding {
+    padding: 18px 12px;
   }
 
   .catalog-controls {
