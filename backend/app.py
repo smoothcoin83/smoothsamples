@@ -6,7 +6,7 @@ from urllib.parse import parse_qs, urlparse
 from data import filter_packs, get_pack_by_slug, list_genres
 
 
-HOST = os.getenv("HOST", "127.0.0.1")
+HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", "8000"))
 
 
