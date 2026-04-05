@@ -6,10 +6,14 @@
   const filterChips = document.getElementById("catalog-filter-chips");
   const catalogGrid = document.getElementById("catalog-grid");
   const sortSelect = document.getElementById("catalog-sort");
+  const searchInput = document.getElementById("catalog-search");
+  const searchSummary = document.getElementById("catalog-search-summary");
 
   if (!genreList || !filterChips || !catalogGrid || !sortSelect) return;
 
+  const searchParams = new URLSearchParams(window.location.search);
   let currentGenre = "";
+  let currentQuery = "";
   let allPacks = [];
 
   function visualClassForGenre(genre) {
@@ -74,7 +78,7 @@
       catalogGrid.innerHTML = `
         <article class="pack-card pack-card-status">
           <h3>No packs found</h3>
-          <p>Try a different genre or sort option.</p>
+          <p>Try a different search term, genre, or sort option.</p>
         </article>
       `;
       return;
@@ -141,16 +145,60 @@
     });
   }
 
+  function updateSearchSummary(total) {
+    if (!searchSummary) return;
+
+    if (currentQuery && currentGenre) {
+      searchSummary.textContent = `${total} pack${total === 1 ? "" : "s"} found for "${currentQuery}" in ${currentGenre}.`;
+      return;
+    }
+
+    if (currentQuery) {
+      searchSummary.textContent = `${total} pack${total === 1 ? "" : "s"} found for "${currentQuery}".`;
+      return;
+    }
+
+    if (currentGenre) {
+      searchSummary.textContent = `${total} pack${total === 1 ? "" : "s"} currently shown in ${currentGenre}.`;
+      return;
+    }
+
+    searchSummary.textContent = "Browse the full catalog and refine by genre or search term.";
+  }
+
+  function syncUrl() {
+    const params = new URLSearchParams();
+    if (currentQuery) params.set("q", currentQuery);
+    if (currentGenre) params.set("genre", currentGenre);
+
+    const nextUrl = params.toString() ? `./catalog.html?${params.toString()}#catalog-grid` : "./catalog.html#catalog-grid";
+    history.replaceState(null, "", nextUrl);
+  }
+
+  function getFilteredPacks() {
+    return currentGenre ? allPacks.filter((pack) => pack.genre === currentGenre) : allPacks;
+  }
+
   async function loadCatalog() {
     try {
+      currentQuery = (searchParams.get("q") || "").trim();
+      currentGenre = (searchParams.get("genre") || "").trim();
+
+      if (searchInput) {
+        searchInput.value = currentQuery;
+      }
+
+      const endpoint = currentQuery ? `/packs?q=${encodeURIComponent(currentQuery)}` : "/packs";
+
       const [genresResponse, packsResponse] = await Promise.all([
         api.fetchJson("/genres"),
-        api.fetchJson("/packs"),
+        api.fetchJson(endpoint),
       ]);
 
       allPacks = packsResponse.items || [];
       renderGenres(genresResponse.items || []);
-      renderPacks(allPacks);
+      renderPacks(getFilteredPacks());
+      updateSearchSummary(getFilteredPacks().length);
       updateActiveGenre();
     } catch (error) {
       catalogGrid.innerHTML = `
@@ -168,22 +216,15 @@
 
     event.preventDefault();
     currentGenre = target.dataset.genre || "";
-
-    const filtered = currentGenre
-      ? allPacks.filter((pack) => pack.genre === currentGenre)
-      : allPacks;
-
+    const filtered = getFilteredPacks();
     renderPacks(filtered);
+    updateSearchSummary(filtered.length);
     updateActiveGenre();
-    window.location.hash = "catalog-grid";
+    syncUrl();
   });
 
   sortSelect.addEventListener("change", () => {
-    const filtered = currentGenre
-      ? allPacks.filter((pack) => pack.genre === currentGenre)
-      : allPacks;
-
-    renderPacks(filtered);
+    renderPacks(getFilteredPacks());
   });
 
   loadCatalog();
