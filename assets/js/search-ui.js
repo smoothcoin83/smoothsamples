@@ -8,13 +8,12 @@
   function createSuggestionsPanel(form) {
     const panel = document.createElement("div");
     panel.className = "search-suggestions";
-    panel.hidden = true;
     form.appendChild(panel);
     return panel;
   }
 
   function hidePanel(panel) {
-    panel.hidden = true;
+    panel.classList.remove("is-visible");
     panel.innerHTML = "";
   }
 
@@ -61,7 +60,7 @@
       requestId += 1;
       const currentRequest = requestId;
 
-      panel.hidden = false;
+      panel.classList.add("is-visible");
       panel.innerHTML = `<div class="search-suggestion-state">Searching packs...</div>`;
 
       try {

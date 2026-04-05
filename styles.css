@@ -168,7 +168,7 @@ button {
   left: 0;
   right: 0;
   z-index: 30;
-  display: grid;
+  display: none;
   gap: 0;
   padding: 8px;
   border-radius: 18px;
@@ -177,8 +177,8 @@ button {
   box-shadow: 0 24px 40px rgba(23, 15, 16, 0.18);
 }
 
-.search-suggestions[hidden] {
-  display: none;
+.search-suggestions.is-visible {
+  display: grid;
 }
 
 .search-suggestion-list {
