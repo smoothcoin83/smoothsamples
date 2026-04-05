@@ -18,6 +18,40 @@
   <body>
     <div class="site-shell">
       <header class="site-header">
+        <div class="utility-bar" aria-label="Store utilities">
+          <a class="utility-logo" href="#" aria-label="Smooth Samples home">
+            <img
+              class="utility-logo-image"
+              src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png"
+              alt="Smooth Samples logo"
+            />
+          </a>
+
+          <form class="search-bar" action="#" method="get" role="search">
+            <label class="sr-only" for="site-search">Search sample packs</label>
+            <input
+              id="site-search"
+              name="q"
+              type="search"
+              placeholder="Search packs, genres, bundles"
+            />
+            <button type="submit" aria-label="Search">Search</button>
+          </form>
+
+          <div class="utility-links">
+            <a href="#contact">Help</a>
+            <a href="#contact">Register</a>
+            <a href="#contact">Login</a>
+            <a href="#contact">EUR €</a>
+          </div>
+
+          <a class="cart-pill" href="#contact" aria-label="View cart">
+            <span class="cart-total">€0.00</span>
+            <span class="cart-meta">0 items</span>
+            <strong>View Cart</strong>
+          </a>
+        </div>
+
         <div class="header-branding">
           <p class="header-kicker">Curated sounds. Instant previews. Cleaner discovery.</p>
           <a class="brand" href="#" aria-label="Smooth Samples home">
@@ -33,70 +67,98 @@
           </p>
         </div>
 
-        <div class="header-actions">
-          <a class="header-cta" href="#contact">Sign In</a>
-        </div>
-
         <div class="header-tools">
           <nav class="site-nav" aria-label="Main navigation">
-            <a href="#featured-packs">Featured</a>
-            <a href="#new-arrivals">New</a>
+            <a href="#featured-packs">Browse</a>
             <a href="#genres">Genres</a>
+            <a href="#featured-packs">Formats</a>
             <a href="#bundles">Bundles</a>
             <a href="#preview-experience">Previews</a>
+            <a href="#new-arrivals">New</a>
+            <a href="#featured-packs">Presets</a>
           </nav>
+        </div>
+
+        <div class="promo-strip" aria-label="Store highlights">
+          <div class="promo-item">
+            <strong>Instant Download</strong>
+            <span>preview and access packs quickly</span>
+          </div>
+          <div class="promo-item">
+            <strong>Curated Producer Catalog</strong>
+            <span>focused sounds across modern genres</span>
+          </div>
+          <div class="promo-item">
+            <strong>Protected Previews</strong>
+            <span>listen freely without exposing full files</span>
+          </div>
         </div>
       </header>
 
       <main class="page">
         <section class="hero">
           <div class="hero-copy">
-            <p class="eyebrow">Featured Experience</p>
-            <h1>Find the right pack fast, preview it instantly, and stay in the creative flow.</h1>
+            <p class="eyebrow">Editor Focus</p>
+            <h1>Start with a focused selection instead of scrolling through noise.</h1>
             <p class="lead">
-              Smooth Samples is now presented more like a real storefront:
-              curated highlights, clear product sections, fast genre browsing,
-              and immediate preview access without clutter.
+              This spotlight area works better as a curated recommendation zone:
+              featured packs, fast genre access, protected previews, and clear
+              entry points into the catalog.
             </p>
             <div class="actions">
               <a class="btn btn-primary" href="#featured-packs">
-                Browse Packs
+                Shop Featured Packs
               </a>
               <a class="btn btn-secondary" href="#new-arrivals">
-                Explore New Releases
+                See New Releases
               </a>
             </div>
           </div>
 
           <aside class="hero-panel" aria-label="Store highlights">
-            <p class="panel-label">Store snapshot</p>
+            <p class="panel-label">This week at Smooth Samples</p>
             <div class="category-links">
-              <a href="#featured-packs">Featured picks</a>
-              <a href="#new-arrivals">Latest releases</a>
-              <a href="#genres">Genre shortcuts</a>
-              <a href="#bundles">Bundle offers</a>
+              <a href="#featured-packs">3 featured producer picks</a>
+              <a href="#new-arrivals">4 fresh arrivals this week</a>
+              <a href="#genres">6 genre shortcuts ready now</a>
+              <a href="#bundles">1 highlighted bundle deal</a>
             </div>
             <div class="stat-card">
-              <strong>120+</strong>
-              <span>royalty-free sounds ready to preview instantly</span>
+              <strong>Top selection</strong>
+              <span>packs chosen to give the homepage a stronger editorial feel</span>
             </div>
             <div class="stat-card">
-              <strong>Fresh weekly</strong>
-              <span>new packs, bundles, and genre collections</span>
+              <strong>Fast discovery</strong>
+              <span>browse by category, not by endless clutter</span>
             </div>
             <div class="stat-card">
-              <strong>No login</strong>
-              <span>listen to previews before creating an account</span>
+              <strong>Preview first</strong>
+              <span>listen before login and keep the buying path simpler</span>
             </div>
           </aside>
         </section>
 
         <section class="catalog-strip" aria-label="Store categories">
-          <a href="#featured-packs">Featured Products</a>
-          <a href="#new-arrivals">New Arrivals</a>
-          <a href="#genres">Browse by Genre</a>
-          <a href="#bundles">Best Value Bundles</a>
-          <a href="#preview-experience">Preview Players</a>
+          <a href="#featured-packs">
+            <strong>Featured Products</strong>
+            <span>curated top picks</span>
+          </a>
+          <a href="#new-arrivals">
+            <strong>New Arrivals</strong>
+            <span>fresh weekly drops</span>
+          </a>
+          <a href="#genres">
+            <strong>Browse by Genre</strong>
+            <span>jump in by style</span>
+          </a>
+          <a href="#bundles">
+            <strong>Best Value Bundles</strong>
+            <span>stronger offers</span>
+          </a>
+          <a href="#preview-experience">
+            <strong>Preview Players</strong>
+            <span>listen before buying</span>
+          </a>
         </section>
 
         <section class="section" id="featured-packs">
@@ -213,28 +275,56 @@
 
           <div class="release-grid">
             <article class="release-card">
-              <span class="release-badge">New</span>
+              <div class="release-art release-art-rnb" aria-hidden="true"></div>
+              <div class="release-top">
+                <span class="release-badge">New</span>
+                <strong>$27</strong>
+              </div>
               <h3>Velvet Signals</h3>
               <p>R&B melodies, vocal moods, and polished drum movement.</p>
-              <strong>$27</strong>
+              <div class="release-meta">
+                <span>36 loops</span>
+                <span>12 vocals</span>
+              </div>
             </article>
             <article class="release-card">
-              <span class="release-badge">Trending</span>
+              <div class="release-art release-art-drill" aria-hidden="true"></div>
+              <div class="release-top">
+                <span class="release-badge">Trending</span>
+                <strong>$31</strong>
+              </div>
               <h3>Concrete Drill</h3>
               <p>Dark bass pressure, raw percussion, and aggressive texture.</p>
-              <strong>$31</strong>
+              <div class="release-meta">
+                <span>48 loops</span>
+                <span>8 808 sets</span>
+              </div>
             </article>
             <article class="release-card">
-              <span class="release-badge">Editor Pick</span>
+              <div class="release-art release-art-house" aria-hidden="true"></div>
+              <div class="release-top">
+                <span class="release-badge">Editor Pick</span>
+                <strong>$26</strong>
+              </div>
               <h3>Analog Sunrise</h3>
               <p>Warm synth loops and melodic house atmospheres.</p>
-              <strong>$26</strong>
+              <div class="release-meta">
+                <span>40 loops</span>
+                <span>6 stems</span>
+              </div>
             </article>
             <article class="release-card">
-              <span class="release-badge">Bundle</span>
+              <div class="release-art release-art-bundle" aria-hidden="true"></div>
+              <div class="release-top">
+                <span class="release-badge">Bundle</span>
+                <strong>$49</strong>
+              </div>
               <h3>Beatmaker Starter Kit</h3>
               <p>Three beginner-friendly packs grouped into one purchase.</p>
-              <strong>$49</strong>
+              <div class="release-meta">
+                <span>3 packs</span>
+                <span>starter value</span>
+              </div>
             </article>
           </div>
         </section>
