@@ -3,36 +3,360 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smooth Samples | Welcome</title>
+    <title>Smooth Samples | Premium Sample Packs</title>
     <meta
       name="description"
-      content="Welcome page preview for Smooth Samples."
+      content="Discover premium sample packs across multiple genres with fast browsing and instant audio previews."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="page">
-      <section class="hero">
-        <img
-          class="brand-logo"
-          src="./assets/logo/smooth-samples-logo.svg"
-          alt="Smooth Samples logo"
-        />
-        <p class="eyebrow">Welcome Preview</p>
-        <h1>Smooth Samples</h1>
-        <p class="lead">
-          Premium sample packs for producers. This is a first welcome page
-          draft to validate layout, style, and responsiveness in your browser.
-        </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#" aria-label="Browse sample packs">
-            Browse Packs
-          </a>
-          <a class="btn btn-secondary" href="#" aria-label="Listen to previews">
-            Listen Previews
-          </a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="Smooth Samples home">
+          <img
+            class="brand-logo"
+            src="./assets/logo/smooth-samples-logo.svg"
+            alt="Smooth Samples logo"
+          />
+        </a>
+
+        <div class="header-tools">
+          <nav class="site-nav" aria-label="Main navigation">
+            <a href="#featured-packs">Featured</a>
+            <a href="#new-arrivals">New</a>
+            <a href="#genres">Genres</a>
+            <a href="#bundles">Bundles</a>
+            <a href="#preview-experience">Previews</a>
+          </nav>
+          <a class="header-cta" href="#contact">Sign In</a>
         </div>
-      </section>
-    </main>
+      </header>
+
+      <main class="page">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Built for modern producers</p>
+            <h1>Sample packs that sound polished before your track is finished.</h1>
+            <p class="lead">
+              Explore curated sounds for trap, lo-fi, house, drill, and more.
+              Smooth Samples helps producers discover premium packs fast, preview
+              them instantly, and find the right vibe without friction.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#featured-packs">
+                Browse Packs
+              </a>
+              <a class="btn btn-secondary" href="#new-arrivals">
+                Explore New Releases
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Store highlights">
+            <p class="panel-label">Browse the catalog</p>
+            <div class="category-links">
+              <a href="#genres">Trap Essentials</a>
+              <a href="#genres">House Grooves</a>
+              <a href="#genres">Lo-Fi Textures</a>
+              <a href="#bundles">Producer Bundles</a>
+            </div>
+            <div class="stat-card">
+              <strong>120+</strong>
+              <span>royalty-free sounds ready to preview instantly</span>
+            </div>
+            <div class="stat-card">
+              <strong>Fresh weekly</strong>
+              <span>new packs, bundles, and genre collections</span>
+            </div>
+            <div class="stat-card">
+              <strong>No login</strong>
+              <span>listen to previews before creating an account</span>
+            </div>
+          </aside>
+        </section>
+
+        <section class="catalog-strip" aria-label="Store categories">
+          <a href="#featured-packs">Featured Products</a>
+          <a href="#new-arrivals">New Arrivals</a>
+          <a href="#genres">Browse by Genre</a>
+          <a href="#bundles">Best Value Bundles</a>
+          <a href="#preview-experience">Preview Players</a>
+        </section>
+
+        <section class="section" id="featured-packs">
+          <div class="section-heading">
+            <p class="eyebrow">Featured Packs</p>
+            <h2>Top collections for immediate inspiration.</h2>
+            <p>
+              A cleaner storefront can still feel rich and commercial when the
+              most important products are organized clearly.
+            </p>
+          </div>
+
+          <div class="pack-grid">
+            <article class="pack-card">
+              <div class="pack-card-top">
+                <p class="pack-tag">Trap</p>
+                <p class="pack-price">$29</p>
+              </div>
+              <h3>Midnight Pressure</h3>
+              <p>
+                Hard drums, dark melodies, and sharp textures designed for
+                modern trap production.
+              </p>
+              <ul class="pack-meta" aria-label="Midnight Pressure details">
+                <li>58 loops</li>
+                <li>24 one-shots</li>
+                <li>WAV + MIDI</li>
+              </ul>
+              <div class="mini-player" aria-label="Midnight Pressure preview player">
+                <div class="mini-player-bar" aria-hidden="true">
+                  <span></span>
+                </div>
+                <div class="mini-player-row">
+                  <strong>Preview 01</strong>
+                  <span>0:32</span>
+                </div>
+              </div>
+              <div class="pack-actions">
+                <a href="#preview-experience">Preview Pack</a>
+                <a href="#contact">View Details</a>
+              </div>
+            </article>
+
+            <article class="pack-card">
+              <div class="pack-card-top">
+                <p class="pack-tag">Lo-Fi</p>
+                <p class="pack-price">$24</p>
+              </div>
+              <h3>Dust & Color</h3>
+              <p>
+                Warm keys, tape mood, and soft percussion for intimate and
+                nostalgic arrangements.
+              </p>
+              <ul class="pack-meta" aria-label="Dust and Color details">
+                <li>44 loops</li>
+                <li>18 textures</li>
+                <li>WAV + stems</li>
+              </ul>
+              <div class="mini-player" aria-label="Dust and Color preview player">
+                <div class="mini-player-bar" aria-hidden="true">
+                  <span class="is-mid"></span>
+                </div>
+                <div class="mini-player-row">
+                  <strong>Preview 02</strong>
+                  <span>0:27</span>
+                </div>
+              </div>
+              <div class="pack-actions">
+                <a href="#preview-experience">Preview Pack</a>
+                <a href="#contact">View Details</a>
+              </div>
+            </article>
+
+            <article class="pack-card">
+              <div class="pack-card-top">
+                <p class="pack-tag">House</p>
+                <p class="pack-price">$32</p>
+              </div>
+              <h3>Neon Motion</h3>
+              <p>
+                Crisp grooves, modern bass movement, and club-ready energy for
+                late-night sessions.
+              </p>
+              <ul class="pack-meta" aria-label="Neon Motion details">
+                <li>62 loops</li>
+                <li>15 bass presets</li>
+                <li>WAV + serum presets</li>
+              </ul>
+              <div class="mini-player" aria-label="Neon Motion preview player">
+                <div class="mini-player-bar" aria-hidden="true">
+                  <span class="is-long"></span>
+                </div>
+                <div class="mini-player-row">
+                  <strong>Preview 03</strong>
+                  <span>0:35</span>
+                </div>
+              </div>
+              <div class="pack-actions">
+                <a href="#preview-experience">Preview Pack</a>
+                <a href="#contact">View Details</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="new-arrivals">
+          <div class="section-heading">
+            <p class="eyebrow">New Arrivals</p>
+            <h2>Recent drops, kept easy to scan.</h2>
+          </div>
+
+          <div class="release-grid">
+            <article class="release-card">
+              <span class="release-badge">New</span>
+              <h3>Velvet Signals</h3>
+              <p>R&B melodies, vocal moods, and polished drum movement.</p>
+              <strong>$27</strong>
+            </article>
+            <article class="release-card">
+              <span class="release-badge">Trending</span>
+              <h3>Concrete Drill</h3>
+              <p>Dark bass pressure, raw percussion, and aggressive texture.</p>
+              <strong>$31</strong>
+            </article>
+            <article class="release-card">
+              <span class="release-badge">Editor Pick</span>
+              <h3>Analog Sunrise</h3>
+              <p>Warm synth loops and melodic house atmospheres.</p>
+              <strong>$26</strong>
+            </article>
+            <article class="release-card">
+              <span class="release-badge">Bundle</span>
+              <h3>Beatmaker Starter Kit</h3>
+              <p>Three beginner-friendly packs grouped into one purchase.</p>
+              <strong>$49</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="section genre-section" id="genres">
+          <div class="section-heading">
+            <p class="eyebrow">Genres</p>
+            <h2>Jump straight into the sound you want.</h2>
+            <p>
+              This section gives the site a stronger store feeling, similar to
+              large sample marketplaces but with less visual clutter.
+            </p>
+          </div>
+
+          <div class="genre-list" aria-label="Music genres">
+            <span>Trap</span>
+            <span>Drill</span>
+            <span>Lo-Fi</span>
+            <span>House</span>
+            <span>R&B</span>
+            <span>Cinematic</span>
+          </div>
+        </section>
+
+        <section class="section bundle-section" id="bundles">
+          <div class="section-heading">
+            <p class="eyebrow">Bundles</p>
+            <h2>Higher value, cleaner presentation.</h2>
+          </div>
+
+          <div class="bundle-panel">
+            <div>
+              <p class="preview-label">Featured bundle</p>
+              <h3>Producer Growth Bundle</h3>
+              <p>
+                Combine trap, lo-fi, and house packs in one curated offer for
+                producers who want a broader starting library.
+              </p>
+            </div>
+            <div class="bundle-price">
+              <span>Save 30%</span>
+              <strong>$69</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="section benefits-section">
+          <div class="section-heading">
+            <p class="eyebrow">Why Smooth Samples</p>
+            <h2>A cleaner buying experience for music producers.</h2>
+          </div>
+
+          <div class="benefit-grid">
+            <article class="benefit-card">
+              <h3>Fast discovery</h3>
+              <p>
+                Clear categories and focused pack cards help users find relevant
+                sounds quickly.
+              </p>
+            </article>
+
+            <article class="benefit-card">
+              <h3>Instant listening</h3>
+              <p>
+                Audio previews are available without forcing account creation at
+                the first visit.
+              </p>
+            </article>
+
+            <article class="benefit-card">
+              <h3>Premium feel</h3>
+              <p>
+                The visual direction is designed to feel modern, curated, and
+                music-focused.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section preview-section" id="preview-experience">
+          <div class="section-heading">
+            <p class="eyebrow">Preview Experience</p>
+            <h2>Listen before you commit.</h2>
+            <p>
+              The final version can include protected preview playback, short
+              audio snippets, and catalog browsing without login.
+            </p>
+          </div>
+
+          <div class="preview-panel">
+            <div class="preview-copy">
+              <p class="preview-label">Preview player concept</p>
+              <h3>Pack preview: Midnight Pressure</h3>
+              <p>
+                A future player area can live here, with waveform, pack info,
+                track list, and protected stream controls.
+              </p>
+            </div>
+            <div class="preview-demo" aria-label="Demo audio player">
+              <div class="preview-demo-top">
+                <strong>Now playing</strong>
+                <span>Secure preview mode</span>
+              </div>
+              <div class="waveform" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="preview-demo-bottom">
+                <span>00:18</span>
+                <span>00:45</span>
+              </div>
+              <a class="btn btn-primary" href="#contact">Request Early Access</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section cta-section" id="contact">
+          <p class="eyebrow">Ready to build the catalog?</p>
+          <h2>Shape a storefront that sounds as good as it looks.</h2>
+          <p>
+            This direction keeps the commercial structure of a larger sample
+            store, but presents it in a cleaner and more modern way.
+          </p>
+          <a class="btn btn-secondary" href="#featured-packs">Explore the Layout</a>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© 2026 Smooth Samples. Premium sounds for modern production.</p>
+      </footer>
+    </div>
   </body>
 </html>
