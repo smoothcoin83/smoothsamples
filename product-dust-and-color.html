@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body class="page-product">
+  <body class="page-product" data-pack-slug="dust-and-color">
     <div class="site-shell" id="top">
       <header class="site-header">
         <div class="utility-bar" aria-label="Store utilities">
@@ -114,9 +114,9 @@
             </div>
 
             <div class="product-summary">
-              <p class="eyebrow">Lo-Fi Pack</p>
-              <h1 class="catalog-title">Dust & Color</h1>
-              <p class="product-lead">
+              <p class="eyebrow" id="product-eyebrow">Lo-Fi Pack</p>
+              <h1 class="catalog-title" id="product-title">Dust & Color</h1>
+              <p class="product-lead" id="product-lead">
                 Warm keys, dusty textures, and soft percussion built for lo-fi,
                 soulful beats, and intimate arrangements.
               </p>
@@ -128,17 +128,17 @@
               </div>
 
               <div class="product-review-line">
-                <span>4.8/5 producer rating</span>
+                <span id="product-review-rating">4.8/5 producer rating</span>
                 <span>92 favorites</span>
                 <span>Instant download</span>
               </div>
 
               <div class="product-price-row">
-                <strong class="product-price">€24</strong>
-                <span class="product-badge">Editor Pick</span>
+                <strong class="product-price" id="product-price">€24</strong>
+                <span class="product-badge" id="product-badge">Editor Pick</span>
               </div>
 
-              <div class="product-meta-grid">
+              <div class="product-meta-grid" id="product-meta-grid">
                 <div><strong>44</strong><span>loops</span></div>
                 <div><strong>18</strong><span>textures</span></div>
                 <div><strong>WAV</strong><span>+ stems</span></div>
@@ -198,7 +198,7 @@
             </article>
           </div>
 
-          <div class="spec-table">
+          <div class="spec-table" id="product-spec-table">
             <div class="spec-row">
               <span>Pack size</span>
               <strong>62 files</strong>
@@ -260,5 +260,7 @@
         <p>© 2026 Smooth Samples. Premium sounds for modern production.</p>
       </footer>
     </div>
+    <script src="./assets/js/store-api.js"></script>
+    <script src="./assets/js/product.js"></script>
   </body>
 </html>

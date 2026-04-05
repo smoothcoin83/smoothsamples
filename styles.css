@@ -888,6 +888,10 @@ button {
   font-weight: 700;
 }
 
+.sidebar-list a.is-active {
+  color: var(--accent);
+}
+
 .sidebar-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1193,6 +1197,28 @@ button {
   border-color: rgba(96, 22, 33, 0.14);
 }
 
+.pack-card-status {
+  justify-content: center;
+  min-height: 260px;
+  text-align: center;
+}
+
+.pack-card-status h3 {
+  margin-bottom: 8px;
+}
+
+.release-card-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 220px;
+  text-align: center;
+}
+
+.release-card-status h3 {
+  margin-bottom: 8px;
+}
+
 .pack-visual {
   height: 170px;
   margin: -22px -22px 18px;
@@ -1396,6 +1422,12 @@ button {
   background:
     radial-gradient(circle at 55% 24%, rgba(255, 255, 255, 0.14), transparent 18%),
     linear-gradient(135deg, rgba(196, 146, 47, 0.82), rgba(103, 43, 33, 0.78));
+}
+
+.release-art-lofi {
+  background:
+    radial-gradient(circle at 72% 28%, rgba(255, 255, 255, 0.16), transparent 18%),
+    linear-gradient(135deg, rgba(196, 146, 47, 0.78), rgba(120, 46, 34, 0.82));
 }
 
 .release-art-bundle {

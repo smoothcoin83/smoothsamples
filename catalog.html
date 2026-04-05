@@ -102,13 +102,8 @@
             <aside class="catalog-sidebar" id="catalog-genres" aria-label="Catalog filters">
               <div class="sidebar-card">
                 <p class="panel-label">Genres</p>
-                <div class="sidebar-list">
-                  <a href="#catalog-grid">Trap</a>
-                  <a href="#catalog-grid">Drill</a>
-                  <a href="#catalog-grid">Lo-Fi</a>
-                  <a href="#catalog-grid">House</a>
-                  <a href="#catalog-grid">R&B</a>
-                  <a href="#catalog-grid">Cinematic</a>
+                <div class="sidebar-list" id="catalog-genre-list">
+                  <a href="#catalog-grid">Loading genres...</a>
                 </div>
               </div>
 
@@ -136,12 +131,8 @@
 
             <div class="catalog-main">
               <div class="catalog-controls" aria-label="Catalog controls">
-                <div class="filter-chips">
-                  <button class="filter-chip is-active" type="button">All</button>
-                  <button class="filter-chip" type="button">Trap</button>
-                  <button class="filter-chip" type="button">Lo-Fi</button>
-                  <button class="filter-chip" type="button">House</button>
-                  <button class="filter-chip" type="button">Bundles</button>
+                <div class="filter-chips" id="catalog-filter-chips">
+                  <button class="filter-chip is-active" type="button" data-genre="">All</button>
                 </div>
                 <div class="sort-control">
                   <label for="catalog-sort">Sort by</label>
@@ -155,124 +146,9 @@
               </div>
 
               <div class="catalog-grid-page" id="catalog-grid">
-                <article class="pack-card">
-                  <div class="pack-visual pack-visual-trap" aria-hidden="true"></div>
-                  <div class="pack-card-top">
-                    <p class="pack-tag">Trap</p>
-                    <p class="pack-price">€29</p>
-                  </div>
-                  <h3>Midnight Pressure</h3>
-                  <div class="pack-submeta">
-                    <span>4.9 rating</span>
-                    <span>Top seller</span>
-                  </div>
-                  <p>Dark melodies, hard drums, and sharp textures for modern trap beats.</p>
-                  <ul class="pack-meta">
-                    <li>58 loops</li>
-                    <li>24 one-shots</li>
-                    <li>WAV + MIDI</li>
-                  </ul>
-                  <div class="mini-player">
-                    <div class="mini-player-bar" aria-hidden="true"><span></span></div>
-                    <div class="mini-player-row">
-                      <strong>Preview 01</strong>
-                      <span>0:32</span>
-                    </div>
-                  </div>
-                  <div class="pack-actions">
-                    <a href="./index.html#preview-experience">Preview Pack</a>
-                    <a href="./product-midnight-pressure.html">View Details</a>
-                  </div>
-                </article>
-
-                <article class="pack-card">
-                  <div class="pack-visual pack-visual-lofi" aria-hidden="true"></div>
-                  <div class="pack-card-top">
-                    <p class="pack-tag">Lo-Fi</p>
-                    <p class="pack-price">€24</p>
-                  </div>
-                  <h3>Dust & Color</h3>
-                  <div class="pack-submeta">
-                    <span>4.8 rating</span>
-                    <span>Editor pick</span>
-                  </div>
-                  <p>Soft percussion, warm keys, and textured loops for relaxed sessions.</p>
-                  <ul class="pack-meta">
-                    <li>44 loops</li>
-                    <li>18 textures</li>
-                    <li>WAV + stems</li>
-                  </ul>
-                  <div class="mini-player">
-                    <div class="mini-player-bar" aria-hidden="true"><span class="is-mid"></span></div>
-                    <div class="mini-player-row">
-                      <strong>Preview 02</strong>
-                      <span>0:27</span>
-                    </div>
-                  </div>
-                  <div class="pack-actions">
-                    <a href="./index.html#preview-experience">Preview Pack</a>
-                    <a href="./product-dust-and-color.html">View Details</a>
-                  </div>
-                </article>
-
-                <article class="pack-card">
-                  <div class="pack-visual pack-visual-house" aria-hidden="true"></div>
-                  <div class="pack-card-top">
-                    <p class="pack-tag">House</p>
-                    <p class="pack-price">€32</p>
-                  </div>
-                  <h3>Neon Motion</h3>
-                  <div class="pack-submeta">
-                    <span>4.7 rating</span>
-                    <span>Club ready</span>
-                  </div>
-                  <p>Bright movement, modern bass loops, and late-night club energy.</p>
-                  <ul class="pack-meta">
-                    <li>62 loops</li>
-                    <li>15 presets</li>
-                    <li>WAV + presets</li>
-                  </ul>
-                  <div class="mini-player">
-                    <div class="mini-player-bar" aria-hidden="true"><span class="is-long"></span></div>
-                    <div class="mini-player-row">
-                      <strong>Preview 03</strong>
-                      <span>0:35</span>
-                    </div>
-                  </div>
-                  <div class="pack-actions">
-                    <a href="./index.html#preview-experience">Preview Pack</a>
-                    <a href="#catalog-help">View Details</a>
-                  </div>
-                </article>
-
-                <article class="pack-card">
-                  <div class="pack-visual pack-visual-trap" aria-hidden="true"></div>
-                  <div class="pack-card-top">
-                    <p class="pack-tag">Drill</p>
-                    <p class="pack-price">€31</p>
-                  </div>
-                  <h3>Concrete Drill</h3>
-                  <div class="pack-submeta">
-                    <span>Trending</span>
-                    <span>808 heavy</span>
-                  </div>
-                  <p>Raw drums, sharp slides, and stripped aggression for modern drill.</p>
-                  <ul class="pack-meta">
-                    <li>48 loops</li>
-                    <li>8 808 sets</li>
-                    <li>WAV + stems</li>
-                  </ul>
-                  <div class="mini-player">
-                    <div class="mini-player-bar" aria-hidden="true"><span></span></div>
-                    <div class="mini-player-row">
-                      <strong>Preview 04</strong>
-                      <span>0:29</span>
-                    </div>
-                  </div>
-                  <div class="pack-actions">
-                    <a href="./index.html#preview-experience">Preview Pack</a>
-                    <a href="#catalog-help">View Details</a>
-                  </div>
+                <article class="pack-card pack-card-status">
+                  <h3>Loading catalog...</h3>
+                  <p>The catalog is now connected to the backend API.</p>
                 </article>
               </div>
             </div>
@@ -297,5 +173,7 @@
         <p>© 2026 Smooth Samples. Premium sounds for modern production.</p>
       </footer>
     </div>
+    <script src="./assets/js/store-api.js"></script>
+    <script src="./assets/js/catalog.js"></script>
   </body>
 </html>
