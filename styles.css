@@ -2358,6 +2358,59 @@ button {
     align-items: stretch;
   }
 
+  .page-home .pack-grid,
+  .page-home .compact-catalog,
+  .page-home .release-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(84vw, 84vw);
+    grid-template-columns: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+    padding: 0 2px 8px;
+  }
+
+  .page-home .pack-grid > *,
+  .page-home .compact-catalog > *,
+  .page-home .release-grid > * {
+    scroll-snap-align: start;
+  }
+
+  .page-home .pack-grid::-webkit-scrollbar,
+  .page-home .compact-catalog::-webkit-scrollbar,
+  .page-home .release-grid::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .page-home .pack-grid::-webkit-scrollbar-thumb,
+  .page-home .compact-catalog::-webkit-scrollbar-thumb,
+  .page-home .release-grid::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(96, 22, 33, 0.18);
+  }
+
+  .page-home .featured-pack-card,
+  .page-home .release-card,
+  .page-home .compact-item {
+    min-height: 100%;
+  }
+
+  .page-home .featured-pack-visual.pack-visual-artwork,
+  .page-home .release-card-cover .release-art {
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+  }
+
+  .page-home .featured-pack-visual {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .section-heading-row {
     flex-direction: column;
     align-items: flex-start;
@@ -2492,6 +2545,22 @@ button {
     flex-wrap: wrap;
   }
 
+  .page-home .pack-grid,
+  .page-home .compact-catalog,
+  .page-home .release-grid {
+    grid-auto-columns: minmax(88vw, 88vw);
+  }
+
+  .page-home .featured-pack-card,
+  .page-home .release-card-cover {
+    box-sizing: border-box;
+  }
+
+  .page-home .featured-pack-visual.pack-visual-artwork,
+  .page-home .release-card-cover .release-art {
+    padding: 16px;
+  }
+
   .cart-item {
     grid-template-columns: 1fr;
     justify-items: start;
@@ -2566,6 +2635,10 @@ button {
 
   .pack-visual {
     height: 148px;
+  }
+
+  .page-home .featured-pack-visual {
+    min-height: 300px;
   }
 
   .release-art {
@@ -2670,6 +2743,17 @@ button {
   .compact-meta strong {
     width: 100%;
     text-align: center;
+  }
+
+  .page-home .pack-grid,
+  .page-home .compact-catalog,
+  .page-home .release-grid {
+    grid-auto-columns: minmax(90vw, 90vw);
+  }
+
+  .page-home .featured-pack-visual.pack-visual-artwork,
+  .page-home .release-card-cover .release-art {
+    padding: 14px;
   }
 
   .search-suggestion-item,
