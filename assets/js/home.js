@@ -24,16 +24,26 @@
     return ["compact-art-a", "compact-art-b", "compact-art-c", "compact-art-d", "compact-art-e", "compact-art-f"][index % 6];
   }
 
+  function coverImageForPack(pack) {
+    return pack.cover_image || "";
+  }
+
   function productHref(slug) {
     if (slug === "midnight-pressure") return "./product-midnight-pressure.html";
     if (slug === "dust-and-color") return "./product-dust-and-color.html";
+    if (slug === "hip-hop-drum-kit-collection-vol-01") {
+      return "./product-hip-hop-drum-kit-collection-vol-01.html";
+    }
     return "./catalog.html";
   }
 
-  function buildSecondaryMetric(contents) {
-    if (contents.one_shots) return `${contents.one_shots} one-shots`;
-    if (contents.stems) return `${contents.stems} stems`;
-    return `${contents.presets} presets`;
+  function buildSecondaryMetric(pack) {
+    if (pack.metric_labels?.secondary) {
+      return `${pack.contents.one_shots} ${pack.metric_labels.secondary}`;
+    }
+    if (pack.contents.one_shots) return `${pack.contents.one_shots} one-shots`;
+    if (pack.contents.stems) return `${pack.contents.stems} stems`;
+    return `${pack.contents.presets} presets`;
   }
 
   function sortPacks(items) {
@@ -54,12 +64,25 @@
   }
 
   function renderFeatured(packs) {
-    const featured = packs.filter((pack) => pack.featured).slice(0, 3);
+    const featured = packs
+      .filter((pack) => pack.featured)
+      .sort((a, b) => {
+        if (a.slug === "hip-hop-drum-kit-collection-vol-01") return -1;
+        if (b.slug === "hip-hop-drum-kit-collection-vol-01") return 1;
+        return b.rating - a.rating;
+      })
+      .slice(0, 3);
 
     featuredGrid.innerHTML = featured
-      .map((pack, index) => `
-        <article class="pack-card">
-          <div class="pack-visual ${visualClassForGenre(pack.genre)}" aria-hidden="true"></div>
+      .map((pack, index) => {
+        const coverImage = coverImageForPack(pack);
+        const visualMarkup = coverImage
+          ? `<div class="pack-visual featured-pack-visual pack-visual-artwork"><img class="pack-cover-image" src="${coverImage}" alt="${pack.title} cover" /></div>`
+          : `<div class="pack-visual featured-pack-visual ${visualClassForGenre(pack.genre)}" aria-hidden="true"></div>`;
+
+        return `
+        <article class="pack-card featured-pack-card">
+          ${visualMarkup}
           <div class="pack-card-top">
             <p class="pack-tag">${pack.genre}</p>
             <p class="pack-price">€${pack.price_eur}</p>
@@ -71,8 +94,8 @@
           </div>
           <p>${pack.summary}</p>
           <ul class="pack-meta" aria-label="${pack.title} details">
-            <li>${pack.contents.loops} loops</li>
-            <li>${buildSecondaryMetric(pack.contents)}</li>
+            <li>${pack.contents.loops} ${pack.metric_labels?.primary || "loops"}</li>
+            <li>${buildSecondaryMetric(pack)}</li>
             <li>${pack.formats.join(" + ")}</li>
           </ul>
           <div class="mini-player" aria-label="${pack.title} preview player">
@@ -89,7 +112,8 @@
             <a href="${productHref(pack.slug)}">View Details</a>
           </div>
         </article>
-      `)
+      `;
+      })
       .join("");
   }
 
@@ -121,9 +145,15 @@
     const items = packs.filter((pack) => pack.new_arrival).slice(0, 4);
 
     newGrid.innerHTML = items
-      .map((pack) => `
-        <article class="release-card">
-          <div class="release-art ${visualClassForGenre(pack.genre).replace("pack-visual-", "release-art-")}" aria-hidden="true"></div>
+      .map((pack) => {
+        const coverImage = coverImageForPack(pack);
+        const visualMarkup = coverImage
+          ? `<div class="release-art release-artwork"><img class="pack-cover-image" src="${coverImage}" alt="${pack.title} cover" /></div>`
+          : `<div class="release-art ${visualClassForGenre(pack.genre).replace("pack-visual-", "release-art-")}" aria-hidden="true"></div>`;
+
+        return `
+        <article class="release-card ${coverImage ? "release-card-cover" : ""}">
+          ${visualMarkup}
           <div class="release-top">
             <span class="release-badge">${pack.badge}</span>
             <strong>€${pack.price_eur}</strong>
@@ -131,17 +161,18 @@
           <h3>${pack.title}</h3>
           <p>${pack.summary}</p>
           <div class="release-meta">
-            <span>${pack.contents.loops} loops</span>
-            <span>${buildSecondaryMetric(pack.contents)}</span>
+            <span>${pack.contents.loops} ${pack.metric_labels?.primary || "loops"}</span>
+            <span>${buildSecondaryMetric(pack)}</span>
           </div>
         </article>
-      `)
+      `;
+      })
       .join("");
   }
 
   function renderFilters(packs) {
     const genres = [...new Set(packs.map((pack) => pack.genre))].filter((genre) =>
-      ["Trap", "Lo-Fi", "House", "Drill"].includes(genre)
+      ["Trap", "Lo-Fi", "House", "Drill", "Hip Hop"].includes(genre)
     );
 
     popularFilters.innerHTML =

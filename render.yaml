@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: smooth-samples-backend
+    runtime: python
+    plan: free
+    region: frankfurt
+    branch: step_1
+    buildCommand: echo "No build step required"
+    startCommand: python backend/app.py
+    healthCheckPath: /api/health

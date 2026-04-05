@@ -28,6 +28,8 @@
     try {
       const pack = await api.fetchJson(`/packs/${slug}`);
       const [secondaryValue, secondaryLabel] = buildSecondaryMetric(pack.contents);
+      const primaryLabel = pack.metric_labels?.primary || "loops";
+      const secondaryMetricLabel = pack.metric_labels?.secondary || secondaryLabel;
 
       document.title = `Smooth Samples | ${pack.title}`;
       title.textContent = pack.title;
@@ -38,8 +40,8 @@
       badge.textContent = pack.badge;
 
       metaGrid.innerHTML = `
-        <div><strong>${pack.contents.loops}</strong><span>loops</span></div>
-        <div><strong>${secondaryValue}</strong><span>${secondaryLabel}</span></div>
+        <div><strong>${pack.contents.loops}</strong><span>${primaryLabel}</span></div>
+        <div><strong>${secondaryValue}</strong><span>${secondaryMetricLabel}</span></div>
         <div><strong>${pack.formats[0]}</strong><span>${pack.formats[1] ? `+ ${pack.formats[1]}` : "format"}</span></div>
         <div><strong>${pack.rating}</strong><span>rating</span></div>
       `;

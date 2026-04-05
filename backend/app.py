@@ -1,12 +1,13 @@
 import json
+import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
 from data import filter_packs, get_pack_by_slug, list_genres
 
 
-HOST = "127.0.0.1"
-PORT = 8000
+HOST = os.getenv("HOST", "127.0.0.1")
+PORT = int(os.getenv("PORT", "8000"))
 
 
 class ApiHandler(BaseHTTPRequestHandler):
@@ -38,6 +39,20 @@ class ApiHandler(BaseHTTPRequestHandler):
                     "ok": True,
                     "service": "smooth-samples-backend",
                     "version": 1,
+                }
+            )
+
+        if path in ("/", "/api"):
+            return self._send_json(
+                {
+                    "ok": True,
+                    "service": "smooth-samples-backend",
+                    "endpoints": [
+                        "/api/health",
+                        "/api/genres",
+                        "/api/packs",
+                        "/api/packs/<slug>",
+                    ],
                 }
             )
 

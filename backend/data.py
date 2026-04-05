@@ -95,6 +95,36 @@ PACKS = [
         },
         "tags": ["drill", "808", "raw", "aggressive"],
     },
+    {
+        "id": 5,
+        "slug": "hip-hop-drum-kit-collection-vol-01",
+        "title": "Hip Hop Drum Kit Collection Vol 01",
+        "genre": "Hip Hop",
+        "price_eur": 19,
+        "rating": 4.9,
+        "badge": "New",
+        "featured": True,
+        "new_arrival": True,
+        "formats": ["WAV", "ZIP"],
+        "summary": "10 custom hip hop drum kits with 70 ready-to-use drum samples.",
+        "description": (
+            "A focused hip hop drum kit bundle built for producers who want fast, "
+            "usable sounds without digging through clutter. Includes 10 custom kits "
+            "with kicks, snares, hats, open hats, crashes, rides, and percussion."
+        ),
+        "contents": {
+            "loops": 10,
+            "one_shots": 70,
+            "presets": 0,
+            "stems": 0,
+        },
+        "metric_labels": {
+            "primary": "kits",
+            "secondary": "drum samples",
+        },
+        "cover_image": "./assets/packs/smooth-samples-hip-hop-drum-kit-collection-vol-01-cover.png",
+        "tags": ["hip hop", "drums", "kit collection", "beatmaking"],
+    },
 ]
 
 

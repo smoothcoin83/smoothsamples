@@ -22,7 +22,14 @@
   function productHref(slug) {
     if (slug === "midnight-pressure") return "./product-midnight-pressure.html";
     if (slug === "dust-and-color") return "./product-dust-and-color.html";
+    if (slug === "hip-hop-drum-kit-collection-vol-01") {
+      return "./product-hip-hop-drum-kit-collection-vol-01.html";
+    }
     return "#catalog-help";
+  }
+
+  function coverImageForPack(pack) {
+    return pack.cover_image || "";
   }
 
   function renderGenres(genres) {
@@ -31,7 +38,7 @@
       .join("");
 
     const chips = genres
-      .filter((genre) => ["Trap", "Lo-Fi", "House", "Drill"].includes(genre))
+      .filter((genre) => ["Trap", "Lo-Fi", "House", "Drill", "Hip Hop"].includes(genre))
       .map(
         (genre) =>
           `<button class="filter-chip" type="button" data-genre="${genre}">${genre}</button>`
@@ -75,7 +82,9 @@
 
     catalogGrid.innerHTML = packs
       .map((pack, index) => {
-        const secondMeta = pack.contents.one_shots
+        const secondMeta = pack.metric_labels?.secondary
+          ? `${pack.contents.one_shots} ${pack.metric_labels.secondary}`
+          : pack.contents.one_shots
           ? `${pack.contents.one_shots} one-shots`
           : pack.contents.stems
             ? `${pack.contents.stems} stems`
@@ -83,10 +92,15 @@
 
         const progressClass =
           index % 3 === 1 ? "is-mid" : index % 3 === 2 ? "is-long" : "";
+        const coverImage = coverImageForPack(pack);
+        const cardClass = coverImage ? "pack-card cover-pack-card" : "pack-card";
+        const visualMarkup = coverImage
+          ? `<div class="pack-visual cover-pack-visual pack-visual-artwork"><img class="pack-cover-image" src="${coverImage}" alt="${pack.title} cover" /></div>`
+          : `<div class="pack-visual ${visualClassForGenre(pack.genre)}" aria-hidden="true"></div>`;
 
         return `
-          <article class="pack-card">
-            <div class="pack-visual ${visualClassForGenre(pack.genre)}" aria-hidden="true"></div>
+          <article class="${cardClass}">
+            ${visualMarkup}
             <div class="pack-card-top">
               <p class="pack-tag">${pack.genre}</p>
               <p class="pack-price">€${pack.price_eur}</p>
@@ -98,7 +112,7 @@
             </div>
             <p>${pack.summary}</p>
             <ul class="pack-meta">
-              <li>${pack.contents.loops} loops</li>
+              <li>${pack.contents.loops} ${pack.metric_labels?.primary || "loops"}</li>
               <li>${secondMeta}</li>
               <li>${pack.formats.join(" + ")}</li>
             </ul>

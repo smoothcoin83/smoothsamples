@@ -36,3 +36,15 @@ The API starts on:
 - This version uses in-memory data from `data.py`.
 - It is a good first step before moving to a real database.
 - CORS is enabled for local frontend testing.
+
+## Deploy on Render
+
+This project is prepared for a free Render web service.
+
+Important current notes from Render:
+
+- Render supports free web services for Python apps.
+- Free web services can spin down after 15 minutes of inactivity.
+- Your service must bind to `0.0.0.0` and use the `PORT` environment variable.
+
+Repository root already includes a `render.yaml` file for this setup.
