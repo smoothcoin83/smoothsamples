@@ -3,6 +3,7 @@
   if (!api) return;
 
   const STORAGE_KEY = "smooth-samples-cart-v1";
+  const VAT_RATE = 0.22;
 
   function readCart() {
     try {
@@ -25,6 +26,21 @@
       },
       { items: 0, total: 0 }
     );
+  }
+
+  function pricing(items) {
+    const summary = totals(items);
+    const subtotal = summary.total;
+    const vat = Number((subtotal * VAT_RATE).toFixed(2));
+    const total = Number((subtotal + vat).toFixed(2));
+
+    return {
+      items: summary.items,
+      subtotal,
+      vat,
+      total,
+      vatRate: VAT_RATE,
+    };
   }
 
   function updateCartPills() {
@@ -75,6 +91,12 @@
 
     match.quantity = Math.max(1, quantity);
     writeCart(items);
+    updateCartPills();
+    dispatchChange();
+  }
+
+  function clearCart() {
+    writeCart([]);
     updateCartPills();
     dispatchChange();
   }
@@ -144,7 +166,9 @@
     addItem,
     removeItem,
     setQuantity,
+    clearCart,
     totals,
+    pricing,
     updateCartPills,
   };
 })();

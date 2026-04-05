@@ -35,29 +35,29 @@
   }
 
   function summaryMarkup(items) {
-    const totals = cart.totals(items);
+    const summary = cart.pricing(items);
 
     return `
       <div class="cart-summary-card">
         <p class="panel-label">Order Summary</p>
         <div class="cart-summary-row">
           <span>Items</span>
-          <strong>${totals.items}</strong>
+          <strong>${summary.items}</strong>
         </div>
         <div class="cart-summary-row">
           <span>Subtotal</span>
-          <strong>€${totals.total.toFixed(2)}</strong>
+          <strong>€${summary.subtotal.toFixed(2)}</strong>
         </div>
         <div class="cart-summary-row">
-          <span>Delivery</span>
-          <strong>Instant download</strong>
+          <span>VAT (${Math.round(summary.vatRate * 100)}%)</span>
+          <strong>€${summary.vat.toFixed(2)}</strong>
         </div>
         <div class="cart-summary-row cart-summary-total">
           <span>Total</span>
-          <strong>€${totals.total.toFixed(2)}</strong>
+          <strong>€${summary.total.toFixed(2)}</strong>
         </div>
         <div class="cart-summary-actions">
-          <a class="btn btn-primary" href="#cart-help">Proceed to Checkout</a>
+          <a class="btn btn-primary" href="./checkout.html">Proceed to Checkout</a>
           <a class="btn btn-secondary" href="./catalog.html">Continue Shopping</a>
         </div>
       </div>

@@ -1463,6 +1463,118 @@ button {
   justify-items: start;
 }
 
+.checkout-layout,
+.order-confirmation-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 22px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.checkout-main {
+  min-width: 0;
+}
+
+.checkout-form,
+.checkout-review-list {
+  display: grid;
+  gap: 18px;
+}
+
+.checkout-card {
+  padding: 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(96, 22, 33, 0.08);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 16px 30px rgba(34, 20, 22, 0.06);
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.form-field span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.form-field input {
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(96, 22, 33, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text);
+  font: inherit;
+}
+
+.checkout-payment-list {
+  display: grid;
+  gap: 12px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(96, 22, 33, 0.08);
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--text);
+}
+
+.checkout-line-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(96, 22, 33, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.checkout-line-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.checkout-line-copy strong {
+  font-size: 0.98rem;
+}
+
+.checkout-line-copy span,
+.checkout-success-note {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.checkout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.checkout-success-note {
+  margin: 0;
+  font-weight: 700;
+}
+
+.order-confirmation-main {
+  display: grid;
+  gap: 18px;
+}
+
 .spec-row strong {
   text-align: right;
 }
@@ -2171,6 +2283,8 @@ button {
   .hero,
   .catalog-layout,
   .cart-layout,
+  .checkout-layout,
+  .order-confirmation-layout,
   .product-layout,
   .detail-grid,
   .preview-panel,
@@ -2382,6 +2496,10 @@ button {
   .cart-item-controls {
     width: 100%;
     justify-items: start;
+  }
+
+  .checkout-grid {
+    grid-template-columns: 1fr;
   }
 
   .product-meta-grid {
