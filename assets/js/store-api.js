@@ -7,6 +7,7 @@
     "midnight-pressure": "./product-midnight-pressure.html",
     "dust-and-color": "./product-dust-and-color.html",
     "hip-hop-drum-kit-collection-vol-01": "./product-hip-hop-drum-kit-collection-vol-01.html",
+    "hip-hop-drum-kit-collection-vol-02": "./product-hip-hop-drum-kit-collection-vol-02.html",
   };
 
   function productHref(slug, title) {
