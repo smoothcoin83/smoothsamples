@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smooth Samples | Catalog</title>
+    <meta
+      name="description"
+      content="Browse the Smooth Samples catalog by genre, format, and bundle type."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="page-catalog">
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <div class="utility-bar" aria-label="Store utilities">
+          <a class="utility-logo" href="./index.html" aria-label="Smooth Samples home">
+            <img
+              class="utility-logo-image"
+              src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png"
+              alt="Smooth Samples logo"
+            />
+          </a>
+
+          <form class="search-bar" action="#" method="get" role="search">
+            <label class="sr-only" for="catalog-search">Search sample packs</label>
+            <input
+              id="catalog-search"
+              name="q"
+              type="search"
+              placeholder="Search the catalog"
+            />
+            <button type="submit" aria-label="Search">Search</button>
+          </form>
+
+          <div class="utility-links">
+            <a href="#catalog-help">Help</a>
+            <a href="#catalog-help">Register</a>
+            <a href="#catalog-help">Login</a>
+            <a href="#catalog-help">EUR €</a>
+          </div>
+
+          <a class="cart-pill" href="#catalog-help" aria-label="View cart">
+            <span class="cart-total">€0.00</span>
+            <span class="cart-meta">0 items</span>
+            <strong>Cart</strong>
+          </a>
+        </div>
+
+        <div class="header-branding header-branding-compact">
+          <p class="header-kicker">Catalog View</p>
+          <a class="brand" href="./index.html" aria-label="Smooth Samples home">
+            <img
+              class="brand-logo"
+              src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png"
+              alt="Smooth Samples logo"
+            />
+          </a>
+          <p class="brand-note">
+            Browse packs by style, format, and producer workflow.
+          </p>
+        </div>
+
+        <div class="header-tools">
+          <nav class="site-nav" aria-label="Main navigation">
+            <a class="is-current" href="./catalog.html" aria-current="page">Browse</a>
+            <a href="./catalog.html#catalog-genres">Genres</a>
+            <a href="./catalog.html#catalog-grid">Formats</a>
+            <a href="./index.html#bundles">Bundles</a>
+            <a href="./index.html#preview-experience">Previews</a>
+            <a href="./index.html#new-arrivals">New</a>
+            <a href="./catalog.html#catalog-grid">Presets</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="./index.html">Home</a>
+          <span>/</span>
+          <a href="./catalog.html" aria-current="page">Catalog</a>
+        </nav>
+
+        <section class="section catalog-hero">
+          <div class="section-heading">
+            <p class="eyebrow">Catalog</p>
+            <h1 class="catalog-title">Find packs by genre, mood, and format.</h1>
+            <p>
+              This is the first dedicated catalog page for Smooth Samples. It is
+              designed to feel more like a real storefront with filters,
+              categories, and a product grid.
+            </p>
+          </div>
+
+          <div class="catalog-jumpbar" aria-label="Catalog quick navigation">
+            <a href="./index.html">Back to Home</a>
+            <a href="#catalog-genres">Jump to Genres</a>
+            <a href="#catalog-grid">View All Packs</a>
+          </div>
+
+          <div class="catalog-layout">
+            <aside class="catalog-sidebar" id="catalog-genres" aria-label="Catalog filters">
+              <div class="sidebar-card">
+                <p class="panel-label">Genres</p>
+                <div class="sidebar-list">
+                  <a href="#catalog-grid">Trap</a>
+                  <a href="#catalog-grid">Drill</a>
+                  <a href="#catalog-grid">Lo-Fi</a>
+                  <a href="#catalog-grid">House</a>
+                  <a href="#catalog-grid">R&B</a>
+                  <a href="#catalog-grid">Cinematic</a>
+                </div>
+              </div>
+
+              <div class="sidebar-card">
+                <p class="panel-label">Formats</p>
+                <div class="sidebar-tags">
+                  <span>WAV</span>
+                  <span>MIDI</span>
+                  <span>Stems</span>
+                  <span>Presets</span>
+                  <span>Bundles</span>
+                </div>
+              </div>
+
+              <div class="sidebar-card">
+                <p class="panel-label">Quick filters</p>
+                <div class="sidebar-tags">
+                  <span>Best sellers</span>
+                  <span>New</span>
+                  <span>Editor picks</span>
+                  <span>Budget</span>
+                </div>
+              </div>
+            </aside>
+
+            <div class="catalog-main">
+              <div class="catalog-controls" aria-label="Catalog controls">
+                <div class="filter-chips">
+                  <button class="filter-chip is-active" type="button">All</button>
+                  <button class="filter-chip" type="button">Trap</button>
+                  <button class="filter-chip" type="button">Lo-Fi</button>
+                  <button class="filter-chip" type="button">House</button>
+                  <button class="filter-chip" type="button">Bundles</button>
+                </div>
+                <div class="sort-control">
+                  <label for="catalog-sort">Sort by</label>
+                  <select id="catalog-sort" name="catalog-sort">
+                    <option>Best Sellers</option>
+                    <option>Newest</option>
+                    <option>Price: Low to High</option>
+                    <option>Editor Picks</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="catalog-grid-page" id="catalog-grid">
+                <article class="pack-card">
+                  <div class="pack-visual pack-visual-trap" aria-hidden="true"></div>
+                  <div class="pack-card-top">
+                    <p class="pack-tag">Trap</p>
+                    <p class="pack-price">€29</p>
+                  </div>
+                  <h3>Midnight Pressure</h3>
+                  <div class="pack-submeta">
+                    <span>4.9 rating</span>
+                    <span>Top seller</span>
+                  </div>
+                  <p>Dark melodies, hard drums, and sharp textures for modern trap beats.</p>
+                  <ul class="pack-meta">
+                    <li>58 loops</li>
+                    <li>24 one-shots</li>
+                    <li>WAV + MIDI</li>
+                  </ul>
+                  <div class="mini-player">
+                    <div class="mini-player-bar" aria-hidden="true"><span></span></div>
+                    <div class="mini-player-row">
+                      <strong>Preview 01</strong>
+                      <span>0:32</span>
+                    </div>
+                  </div>
+                  <div class="pack-actions">
+                    <a href="./index.html#preview-experience">Preview Pack</a>
+                    <a href="./product-midnight-pressure.html">View Details</a>
+                  </div>
+                </article>
+
+                <article class="pack-card">
+                  <div class="pack-visual pack-visual-lofi" aria-hidden="true"></div>
+                  <div class="pack-card-top">
+                    <p class="pack-tag">Lo-Fi</p>
+                    <p class="pack-price">€24</p>
+                  </div>
+                  <h3>Dust & Color</h3>
+                  <div class="pack-submeta">
+                    <span>4.8 rating</span>
+                    <span>Editor pick</span>
+                  </div>
+                  <p>Soft percussion, warm keys, and textured loops for relaxed sessions.</p>
+                  <ul class="pack-meta">
+                    <li>44 loops</li>
+                    <li>18 textures</li>
+                    <li>WAV + stems</li>
+                  </ul>
+                  <div class="mini-player">
+                    <div class="mini-player-bar" aria-hidden="true"><span class="is-mid"></span></div>
+                    <div class="mini-player-row">
+                      <strong>Preview 02</strong>
+                      <span>0:27</span>
+                    </div>
+                  </div>
+                  <div class="pack-actions">
+                    <a href="./index.html#preview-experience">Preview Pack</a>
+                    <a href="./product-dust-and-color.html">View Details</a>
+                  </div>
+                </article>
+
+                <article class="pack-card">
+                  <div class="pack-visual pack-visual-house" aria-hidden="true"></div>
+                  <div class="pack-card-top">
+                    <p class="pack-tag">House</p>
+                    <p class="pack-price">€32</p>
+                  </div>
+                  <h3>Neon Motion</h3>
+                  <div class="pack-submeta">
+                    <span>4.7 rating</span>
+                    <span>Club ready</span>
+                  </div>
+                  <p>Bright movement, modern bass loops, and late-night club energy.</p>
+                  <ul class="pack-meta">
+                    <li>62 loops</li>
+                    <li>15 presets</li>
+                    <li>WAV + presets</li>
+                  </ul>
+                  <div class="mini-player">
+                    <div class="mini-player-bar" aria-hidden="true"><span class="is-long"></span></div>
+                    <div class="mini-player-row">
+                      <strong>Preview 03</strong>
+                      <span>0:35</span>
+                    </div>
+                  </div>
+                  <div class="pack-actions">
+                    <a href="./index.html#preview-experience">Preview Pack</a>
+                    <a href="#catalog-help">View Details</a>
+                  </div>
+                </article>
+
+                <article class="pack-card">
+                  <div class="pack-visual pack-visual-trap" aria-hidden="true"></div>
+                  <div class="pack-card-top">
+                    <p class="pack-tag">Drill</p>
+                    <p class="pack-price">€31</p>
+                  </div>
+                  <h3>Concrete Drill</h3>
+                  <div class="pack-submeta">
+                    <span>Trending</span>
+                    <span>808 heavy</span>
+                  </div>
+                  <p>Raw drums, sharp slides, and stripped aggression for modern drill.</p>
+                  <ul class="pack-meta">
+                    <li>48 loops</li>
+                    <li>8 808 sets</li>
+                    <li>WAV + stems</li>
+                  </ul>
+                  <div class="mini-player">
+                    <div class="mini-player-bar" aria-hidden="true"><span></span></div>
+                    <div class="mini-player-row">
+                      <strong>Preview 04</strong>
+                      <span>0:29</span>
+                    </div>
+                  </div>
+                  <div class="pack-actions">
+                    <a href="./index.html#preview-experience">Preview Pack</a>
+                    <a href="#catalog-help">View Details</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section cta-section" id="catalog-help">
+          <p class="eyebrow">Next Step</p>
+          <h2>From here we can build product pages, real filters, and checkout flows.</h2>
+          <p>
+            This catalog page gives the project a more realistic e-commerce
+            structure and a clear base for the next screens.
+          </p>
+          <div class="cta-actions">
+            <a class="btn btn-secondary" href="./index.html">Back to Homepage</a>
+            <a class="btn btn-primary" href="#top">Back to Top</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© 2026 Smooth Samples. Premium sounds for modern production.</p>
+      </footer>
+    </div>
+  </body>
+</html>
