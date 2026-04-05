@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smooth Samples | Cart</title>
+    <meta
+      name="description"
+      content="Review the Smooth Samples demo cart with selected packs, quantities, and order summary."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="page-cart">
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <div class="utility-bar" aria-label="Store utilities">
+          <a class="utility-logo" href="./index.html" aria-label="Smooth Samples home">
+            <img
+              class="utility-logo-image"
+              src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png"
+              alt="Smooth Samples logo"
+            />
+          </a>
+
+          <form class="search-bar" action="./catalog.html" method="get" role="search">
+            <label class="sr-only" for="cart-search">Search sample packs</label>
+            <input
+              id="cart-search"
+              name="q"
+              type="search"
+              placeholder="Search packs, genres, bundles"
+            />
+            <button type="submit" aria-label="Search">Search</button>
+          </form>
+
+          <div class="utility-links">
+            <a href="#cart-help">Help</a>
+            <a href="#cart-help">Register</a>
+            <a href="#cart-help">Login</a>
+            <a href="#cart-help">EUR €</a>
+          </div>
+
+          <a class="cart-pill" href="./cart.html" aria-label="View cart">
+            <span class="cart-total">€0.00</span>
+            <span class="cart-meta">0 items</span>
+            <strong>Cart</strong>
+          </a>
+        </div>
+
+        <div class="header-branding header-branding-compact">
+          <p class="header-kicker">Cart View</p>
+          <a class="brand" href="./index.html" aria-label="Smooth Samples home">
+            <img
+              class="brand-logo"
+              src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png"
+              alt="Smooth Samples logo"
+            />
+          </a>
+          <p class="brand-note">
+            Review selected packs before checkout.
+          </p>
+        </div>
+
+        <div class="header-tools">
+          <nav class="site-nav" aria-label="Main navigation">
+            <a href="./catalog.html">Browse</a>
+            <a href="./catalog.html#catalog-genres">Genres</a>
+            <a href="./catalog.html#catalog-grid">Formats</a>
+            <a href="./index.html#bundles">Bundles</a>
+            <a href="./index.html#preview-experience">Previews</a>
+            <a href="./index.html#new-arrivals">New</a>
+            <a class="is-current" href="./cart.html" aria-current="page">Cart</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="./index.html">Home</a>
+          <span>/</span>
+          <a href="./catalog.html">Catalog</a>
+          <span>/</span>
+          <a href="./cart.html" aria-current="page">Cart</a>
+        </nav>
+
+        <section class="section cart-hero">
+          <div class="section-heading">
+            <p class="eyebrow">Cart</p>
+            <h1 class="catalog-title">Keep track of the packs you want to revisit or buy.</h1>
+            <p>
+              This is a realistic demo cart: quantities update instantly, totals
+              are saved locally, and selected packs stay visible when you move
+              through the site.
+            </p>
+          </div>
+
+          <div class="cart-layout">
+            <div class="cart-items" id="cart-items">
+              <article class="pack-card pack-card-status">
+                <h3>Loading cart...</h3>
+                <p>Your selected packs will appear here.</p>
+              </article>
+            </div>
+            <aside class="cart-summary" id="cart-summary"></aside>
+          </div>
+        </section>
+
+        <section class="section cta-section" id="cart-help">
+          <p class="eyebrow">Next Step</p>
+          <h2>We can turn this demo cart into a real checkout flow later.</h2>
+          <p>
+            For now it gives the storefront a much more realistic shopping
+            experience across homepage, catalog, and product pages.
+          </p>
+          <div class="cta-actions">
+            <a class="btn btn-secondary" href="./catalog.html">Continue Shopping</a>
+            <a class="btn btn-primary" href="#top">Back to Top</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© 2026 Smooth Samples. Premium sounds for modern production.</p>
+      </footer>
+    </div>
+    <script src="./assets/js/store-api.js"></script>
+    <script src="./assets/js/cart.js"></script>
+    <script src="./assets/js/search-ui.js"></script>
+    <script src="./assets/js/cart-page.js"></script>
+  </body>
+</html>

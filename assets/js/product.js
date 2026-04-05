@@ -13,6 +13,7 @@
   const badge = document.getElementById("product-badge");
   const metaGrid = document.getElementById("product-meta-grid");
   const specTable = document.getElementById("product-spec-table");
+  const addToCartButton = document.getElementById("add-to-cart-button");
 
   if (!title || !eyebrow || !lead || !reviewRating || !price || !badge || !metaGrid || !specTable) {
     return;
@@ -38,6 +39,16 @@
       reviewRating.textContent = `${pack.rating}/5 producer rating`;
       price.textContent = `€${pack.price_eur}`;
       badge.textContent = pack.badge;
+
+      if (addToCartButton) {
+        addToCartButton.dataset.addToCart = "true";
+        addToCartButton.dataset.packSlug = pack.slug;
+        addToCartButton.dataset.packTitle = pack.title;
+        addToCartButton.dataset.packPrice = pack.price_eur;
+        addToCartButton.dataset.packGenre = pack.genre;
+        addToCartButton.dataset.packHref = api.productHref(pack.slug, pack.title);
+        addToCartButton.dataset.packCover = pack.cover_image || "";
+      }
 
       metaGrid.innerHTML = `
         <div><strong>${pack.contents.loops}</strong><span>${primaryLabel}</span></div>

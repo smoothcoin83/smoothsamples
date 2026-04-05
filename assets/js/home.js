@@ -29,12 +29,7 @@
   }
 
   function productHref(slug) {
-    if (slug === "midnight-pressure") return "./product-midnight-pressure.html";
-    if (slug === "dust-and-color") return "./product-dust-and-color.html";
-    if (slug === "hip-hop-drum-kit-collection-vol-01") {
-      return "./product-hip-hop-drum-kit-collection-vol-01.html";
-    }
-    return "./catalog.html";
+    return api.productHref(slug);
   }
 
   function buildSecondaryMetric(pack) {
@@ -108,7 +103,19 @@
             </div>
           </div>
           <div class="pack-actions">
-            <a href="#preview-experience">Preview Pack</a>
+            <button
+              type="button"
+              class="pack-action-button"
+              data-add-to-cart
+              data-pack-slug="${pack.slug}"
+              data-pack-title="${pack.title}"
+              data-pack-price="${pack.price_eur}"
+              data-pack-genre="${pack.genre}"
+              data-pack-href="${productHref(pack.slug)}"
+              data-pack-cover="${coverImage}"
+            >
+              Add to Cart
+            </button>
             <a href="${productHref(pack.slug)}">View Details</a>
           </div>
         </article>
@@ -135,6 +142,19 @@
           <div class="compact-meta">
             <span>€${pack.price_eur}</span>
             <strong><a href="${productHref(pack.slug)}">View</a></strong>
+            <button
+              type="button"
+              class="compact-add-button"
+              data-add-to-cart
+              data-pack-slug="${pack.slug}"
+              data-pack-title="${pack.title}"
+              data-pack-price="${pack.price_eur}"
+              data-pack-genre="${pack.genre}"
+              data-pack-href="${productHref(pack.slug)}"
+              data-pack-cover="${coverImageForPack(pack)}"
+            >
+              Add
+            </button>
           </div>
         </article>
       `)
@@ -163,6 +183,22 @@
           <div class="release-meta">
             <span>${pack.contents.loops} ${pack.metric_labels?.primary || "loops"}</span>
             <span>${buildSecondaryMetric(pack)}</span>
+          </div>
+          <div class="pack-actions release-actions">
+            <button
+              type="button"
+              class="pack-action-button"
+              data-add-to-cart
+              data-pack-slug="${pack.slug}"
+              data-pack-title="${pack.title}"
+              data-pack-price="${pack.price_eur}"
+              data-pack-genre="${pack.genre}"
+              data-pack-href="${productHref(pack.slug)}"
+              data-pack-cover="${coverImage}"
+            >
+              Add to Cart
+            </button>
+            <a href="${productHref(pack.slug)}">View Details</a>
           </div>
         </article>
       `;

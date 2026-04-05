@@ -24,12 +24,7 @@
   }
 
   function productHref(slug) {
-    if (slug === "midnight-pressure") return "./product-midnight-pressure.html";
-    if (slug === "dust-and-color") return "./product-dust-and-color.html";
-    if (slug === "hip-hop-drum-kit-collection-vol-01") {
-      return "./product-hip-hop-drum-kit-collection-vol-01.html";
-    }
-    return "#catalog-help";
+    return api.productHref(slug);
   }
 
   function coverImageForPack(pack) {
@@ -128,7 +123,19 @@
               </div>
             </div>
             <div class="pack-actions">
-              <a href="./index.html#preview-experience">Preview Pack</a>
+              <button
+                type="button"
+                class="pack-action-button"
+                data-add-to-cart
+                data-pack-slug="${pack.slug}"
+                data-pack-title="${pack.title}"
+                data-pack-price="${pack.price_eur}"
+                data-pack-genre="${pack.genre}"
+                data-pack-href="${productHref(pack.slug)}"
+                data-pack-cover="${coverImage}"
+              >
+                Add to Cart
+              </button>
               <a href="${productHref(pack.slug)}">View Details</a>
             </div>
           </article>

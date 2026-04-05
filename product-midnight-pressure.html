@@ -40,7 +40,7 @@
             <a href="#product-help">EUR €</a>
           </div>
 
-          <a class="cart-pill" href="#product-help" aria-label="View cart">
+          <a class="cart-pill" href="./cart.html" aria-label="View cart">
             <span class="cart-total">€0.00</span>
             <span class="cart-meta">0 items</span>
             <strong>Cart</strong>
@@ -161,7 +161,9 @@
               </div>
 
               <div class="product-actions">
-                <a class="btn btn-primary" href="#product-help">Add to Cart</a>
+                <button class="btn btn-primary" id="add-to-cart-button" type="button">
+                  Add to Cart
+                </button>
                 <a class="btn btn-secondary" href="./catalog.html">Back to Catalog</a>
               </div>
 
@@ -261,6 +263,8 @@
       </footer>
     </div>
     <script src="./assets/js/store-api.js"></script>
+    <script src="./assets/js/cart.js"></script>
+    <script src="./assets/js/search-ui.js"></script>
     <script src="./assets/js/product.js"></script>
   </body>
 </html>
