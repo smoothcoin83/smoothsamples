@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smooth Samples | Register</title>
+    <meta
+      name="description"
+      content="Create a demo Smooth Samples account to save your session and move through the storefront."
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260406-7" />
+  </head>
+  <body class="page-register">
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <div class="utility-bar" aria-label="Store utilities">
+          <a class="utility-logo" href="./index.html" aria-label="Smooth Samples home">
+            <img class="utility-logo-image" src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png" alt="Smooth Samples logo" />
+          </a>
+          <form class="search-bar" action="./catalog.html" method="get" role="search">
+            <label class="sr-only" for="register-search">Search sample packs</label>
+            <input id="register-search" name="q" type="search" placeholder="Search packs, genres, bundles" />
+            <button type="submit" aria-label="Search">Search</button>
+          </form>
+          <div class="utility-links" data-help-href="./index.html#contact">
+            <a href="./index.html#contact">Help</a>
+            <a href="./register.html">Register</a>
+            <a href="./login.html">Login</a>
+            <a href="./catalog.html">USD $</a>
+          </div>
+          <a class="cart-pill" href="./cart.html" aria-label="View cart">
+            <span class="cart-total">$0.00</span>
+            <span class="cart-meta">0 items</span>
+            <strong>Cart</strong>
+          </a>
+        </div>
+
+      </header>
+
+      <main class="page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="./index.html">Home</a>
+          <span>/</span>
+          <a href="./register.html" aria-current="page">Register</a>
+        </nav>
+
+        <section class="section auth-hero">
+          <div class="auth-layout">
+            <div class="checkout-card auth-card">
+              <div class="section-heading">
+                <p class="eyebrow">Create Account</p>
+                <h1 class="catalog-title">Register in one quick step.</h1>
+                <p>
+                  This is a demo account system for the storefront. It keeps your session active
+                  on this device and makes the site feel much more complete.
+                </p>
+              </div>
+
+              <form class="checkout-form" id="register-form">
+                <label class="form-field">
+                  <span>Full Name</span>
+                  <input type="text" name="full_name" required placeholder="Brian Smooth" />
+                </label>
+                <label class="form-field">
+                  <span>Email</span>
+                  <input type="email" name="email" required placeholder="you@example.com" />
+                </label>
+                <label class="form-field">
+                  <span>Password</span>
+                  <input type="password" name="password" required placeholder="Create a password" />
+                </label>
+                <div class="checkout-actions">
+                  <button class="btn btn-primary" type="submit">Create Demo Account</button>
+                  <a class="btn btn-secondary" href="./login.html">Already have an account?</a>
+                </div>
+                <p class="auth-message" id="register-message"></p>
+              </form>
+            </div>
+
+            <aside class="checkout-card auth-card auth-side-card">
+              <p class="panel-label">Why register</p>
+              <div class="auth-benefits">
+                <div class="account-detail">
+                  <span>Session</span>
+                  <strong>Stay logged in on this browser</strong>
+                </div>
+                <div class="account-detail">
+                  <span>Flow</span>
+                  <strong>Move from browse to cart with a real account feel</strong>
+                </div>
+                <div class="account-detail">
+                  <span>Next step</span>
+                  <strong>Ready for future real checkout and downloads</strong>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© 2026 Smooth Samples. Premium sounds for modern production.</p>
+      </footer>
+    </div>
+    <script src="./assets/js/store-api.js"></script>
+    <script src="./assets/js/cart.js"></script>
+    <script src="./assets/js/auth.js?v=20260406-7"></script>
+    <script src="./assets/js/search-ui.js?v=20260406-7"></script>
+    <script src="./assets/js/auth-page.js?v=20260406-7"></script>
+  </body>
+</html>

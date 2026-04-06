@@ -1,5 +1,6 @@
 (function () {
   const cart = window.SmoothSamplesCart;
+  const auth = window.SmoothSamplesAuth;
   if (!cart) return;
 
   const ORDER_STORAGE_KEY = "smooth-samples-last-order";
@@ -54,6 +55,7 @@
 
   function render() {
     const items = cart.readCart();
+    const user = auth?.getCurrentUser?.();
 
     if (!items.length) {
       itemsRoot.innerHTML = `
@@ -71,6 +73,19 @@
     itemsRoot.innerHTML = items.map(itemMarkup).join("");
     summaryRoot.innerHTML = summaryMarkup(items);
     form.hidden = false;
+
+    if (user) {
+      const fullNameInput = form.elements.namedItem("full_name");
+      const emailInput = form.elements.namedItem("email");
+
+      if (fullNameInput && !fullNameInput.value) {
+        fullNameInput.value = user.fullName || "";
+      }
+
+      if (emailInput && !emailInput.value) {
+        emailInput.value = user.email || "";
+      }
+    }
   }
 
   form.addEventListener("submit", (event) => {

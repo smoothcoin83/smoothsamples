@@ -8,7 +8,7 @@
       name="description"
       content="Discover premium sample packs across multiple genres with fast browsing and instant audio previews."
     />
-    <link rel="stylesheet" href="./styles.css?v=20260406-3" />
+    <link rel="stylesheet" href="./styles.css?v=20260406-6" />
     <script>
       if (window.location.hash) {
         history.replaceState(null, "", window.location.pathname + window.location.search);
@@ -38,11 +38,11 @@
             <button type="submit" aria-label="Search">Search</button>
           </form>
 
-          <div class="utility-links">
+          <div class="utility-links" data-help-href="#contact">
             <a href="#contact">Help</a>
-            <a href="#contact">Register</a>
-            <a href="#contact">Login</a>
-            <a href="#contact">USD $</a>
+            <a href="./register.html">Register</a>
+            <a href="./login.html">Login</a>
+            <a href="./catalog.html">USD $</a>
           </div>
 
           <a class="cart-pill" href="./cart.html" aria-label="View cart">
@@ -71,9 +71,9 @@
           <nav class="site-nav" aria-label="Main navigation">
             <a href="./index.html" aria-current="page">Home</a>
             <a href="./catalog.html">Browse</a>
-            <a href="#genres">Genres</a>
+            <a href="./catalog.html">Genres</a>
             <a href="#featured-packs">Formats</a>
-            <a href="#bundles">Bundles</a>
+            <a href="./catalog.html">Bundles</a>
             <a href="#preview-experience">Previews</a>
             <a href="#new-arrivals">New</a>
             <a href="#featured-packs">Presets</a>
@@ -93,49 +93,13 @@
                 the product selection, so the packs stay front and center.
               </p>
             </div>
-            <a class="section-link" href="#popular-now">Explore More Packs</a>
+            <a class="section-link" href="./catalog.html">Explore More Packs</a>
           </div>
 
           <div class="pack-grid" id="home-featured-grid">
             <article class="pack-card pack-card-status">
               <h3>Loading featured packs...</h3>
               <p>The homepage is connecting to the backend API.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section compact-catalog-section" id="popular-now">
-          <div class="section-heading-row">
-            <div class="section-heading">
-              <p class="eyebrow">Popular Right Now</p>
-              <h2>A denser product grid that feels closer to a real storefront.</h2>
-              <p>
-                This section gives the homepage a stronger catalog rhythm, closer
-                to what users expect from a sample shop.
-              </p>
-            </div>
-            <a class="section-link" href="#new-arrivals">See New Arrivals</a>
-          </div>
-
-          <div class="catalog-controls" aria-label="Catalog controls">
-            <div class="filter-chips" id="home-popular-filters">
-              <button class="filter-chip is-active" type="button" data-home-genre="">All</button>
-            </div>
-            <div class="sort-control">
-              <label for="home-sort-by">Sort by</label>
-              <select id="home-sort-by" name="home-sort-by">
-                <option>Best Sellers</option>
-                <option>Newest</option>
-                <option>Price: Low to High</option>
-                <option>Editor Picks</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="compact-catalog" id="home-popular-grid">
-            <article class="pack-card pack-card-status">
-              <h3>Loading popular packs...</h3>
-              <p>This section will refresh from the backend.</p>
             </article>
           </div>
         </section>
@@ -153,93 +117,6 @@
             <article class="release-card release-card-status">
               <h3>Loading new arrivals...</h3>
               <p>Newest packs will appear here from the backend.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section genre-section" id="genres">
-          <div class="section-heading-row">
-            <div class="section-heading">
-              <p class="eyebrow">Genres</p>
-              <h2>Jump straight into the sound you want.</h2>
-              <p>
-                This section gives the site a stronger store feeling, similar to
-                large sample marketplaces but with less visual clutter.
-              </p>
-            </div>
-            <a class="section-link" href="#popular-now">See Popular Packs</a>
-          </div>
-
-          <div class="genre-list" aria-label="Music genres">
-            <span>Trap</span>
-            <span>Drill</span>
-            <span>Lo-Fi</span>
-            <span>House</span>
-            <span>R&B</span>
-            <span>Cinematic</span>
-          </div>
-          <div class="genre-actions">
-            <a class="btn btn-secondary" href="./catalog.html#catalog-grid">Browse Genre Packs</a>
-          </div>
-        </section>
-
-        <section class="section bundle-section" id="bundles">
-          <div class="section-heading-row">
-            <div class="section-heading">
-              <p class="eyebrow">Bundles</p>
-              <h2>Higher value, cleaner presentation.</h2>
-            </div>
-            <a class="section-link" href="#preview-experience">How previews work</a>
-          </div>
-
-          <div class="bundle-panel">
-            <div>
-              <p class="preview-label">Featured bundle</p>
-              <h3>Producer Growth Bundle</h3>
-              <p>
-                Combine trap, lo-fi, and house packs in one curated offer for
-                producers who want a broader starting library.
-              </p>
-            </div>
-            <div class="bundle-price">
-              <span>Save 30%</span>
-              <strong>$69</strong>
-            </div>
-          </div>
-        </section>
-
-        <section class="section benefits-section">
-          <div class="section-heading-row">
-            <div class="section-heading">
-              <p class="eyebrow">Why Smooth Samples</p>
-              <h2>A cleaner buying experience for music producers.</h2>
-            </div>
-            <a class="section-link" href="#contact">Request Access</a>
-          </div>
-
-          <div class="benefit-grid">
-            <article class="benefit-card">
-              <h3>Fast discovery</h3>
-              <p>
-                Clear categories and focused pack cards help users find relevant
-                sounds quickly.
-              </p>
-            </article>
-
-            <article class="benefit-card">
-              <h3>Instant listening</h3>
-              <p>
-                Audio previews are available without forcing account creation at
-                the first visit.
-              </p>
-            </article>
-
-            <article class="benefit-card">
-              <h3>Premium feel</h3>
-              <p>
-                The visual direction is designed to feel modern, curated, and
-                music-focused.
-              </p>
             </article>
           </div>
         </section>
@@ -314,7 +191,8 @@
     </div>
     <script src="./assets/js/store-api.js"></script>
     <script src="./assets/js/cart.js"></script>
-    <script src="./assets/js/search-ui.js?v=20260406-3"></script>
-    <script src="./assets/js/home.js?v=20260406-3"></script>
+    <script src="./assets/js/auth.js?v=20260406-7"></script>
+    <script src="./assets/js/search-ui.js?v=20260406-6"></script>
+    <script src="./assets/js/home.js?v=20260406-6"></script>
   </body>
 </html>

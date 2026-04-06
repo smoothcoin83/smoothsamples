@@ -1804,6 +1804,65 @@ button {
   justify-items: start;
 }
 
+.auth-layout,
+.account-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.72fr);
+  gap: 22px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.auth-card,
+.auth-side-card {
+  min-width: 0;
+}
+
+.auth-message {
+  min-height: 24px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.auth-message.is-error {
+  color: #8b1e2f;
+}
+
+.auth-message.is-success {
+  color: #1d6e52;
+}
+
+.auth-benefits,
+.account-detail-list,
+.account-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.account-detail {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(96, 22, 33, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.account-detail span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.account-detail strong {
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
 .checkout-layout,
 .order-confirmation-layout {
   display: grid;
@@ -2974,6 +3033,11 @@ button {
 
   .payment-option {
     align-items: flex-start;
+  }
+
+  .auth-layout,
+  .account-layout {
+    grid-template-columns: 1fr;
   }
 
   .cart-quantity {

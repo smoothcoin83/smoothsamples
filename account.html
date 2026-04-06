@@ -3,43 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smooth Samples | Order Confirmation</title>
+    <title>Smooth Samples | Account</title>
     <meta
       name="description"
-      content="Demo order confirmation for Smooth Samples."
+      content="Demo account area for Smooth Samples."
     />
-    <link rel="stylesheet" href="./styles.css?v=20260406-3" />
+    <link rel="stylesheet" href="./styles.css?v=20260406-7" />
   </head>
-  <body class="page-order-confirmation">
+  <body class="page-account">
     <div class="site-shell" id="top">
       <header class="site-header">
         <div class="utility-bar" aria-label="Store utilities">
           <a class="utility-logo" href="./index.html" aria-label="Smooth Samples home">
-            <img
-              class="utility-logo-image"
-              src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png"
-              alt="Smooth Samples logo"
-            />
+            <img class="utility-logo-image" src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png" alt="Smooth Samples logo" />
           </a>
-
           <form class="search-bar" action="./catalog.html" method="get" role="search">
-            <label class="sr-only" for="order-search">Search sample packs</label>
-            <input
-              id="order-search"
-              name="q"
-              type="search"
-              placeholder="Search packs, genres, bundles"
-            />
+            <label class="sr-only" for="account-search">Search sample packs</label>
+            <input id="account-search" name="q" type="search" placeholder="Search packs, genres, bundles" />
             <button type="submit" aria-label="Search">Search</button>
           </form>
-
           <div class="utility-links" data-help-href="./index.html#contact">
             <a href="./index.html#contact">Help</a>
-            <a href="./register.html">Register</a>
-            <a href="./login.html">Login</a>
+            <a href="./account.html">Account</a>
+            <a href="#">Logout</a>
             <a href="./catalog.html">USD $</a>
           </div>
-
           <a class="cart-pill" href="./cart.html" aria-label="View cart">
             <span class="cart-total">$0.00</span>
             <span class="cart-meta">0 items</span>
@@ -48,21 +36,15 @@
         </div>
 
         <div class="header-branding header-branding-compact">
-          <p class="header-kicker">Order Confirmation</p>
+          <p class="header-kicker">Account</p>
           <a class="brand" href="./index.html" aria-label="Smooth Samples home">
-            <img
-              class="brand-logo"
-              src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png"
-              alt="Smooth Samples logo"
-            />
+            <img class="brand-logo" src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png" alt="Smooth Samples logo" />
           </a>
-          <p class="brand-note">
-            Demo confirmation screen for the storefront flow.
-          </p>
+          <p class="brand-note">A simple demo account layer for a more complete storefront flow.</p>
         </div>
       </header>
 
-      <main class="page" id="order-confirmation-root"></main>
+      <main class="page" id="account-root"></main>
 
       <footer class="site-footer">
         <p>© 2026 Smooth Samples. Premium sounds for modern production.</p>
@@ -71,7 +53,7 @@
     <script src="./assets/js/store-api.js"></script>
     <script src="./assets/js/cart.js"></script>
     <script src="./assets/js/auth.js?v=20260406-7"></script>
-    <script src="./assets/js/search-ui.js?v=20260406-3"></script>
-    <script src="./assets/js/order-confirmation.js?v=20260406-3"></script>
+    <script src="./assets/js/search-ui.js?v=20260406-7"></script>
+    <script src="./assets/js/auth-page.js?v=20260406-7"></script>
   </body>
 </html>
