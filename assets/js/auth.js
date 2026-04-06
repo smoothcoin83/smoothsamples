@@ -234,6 +234,7 @@
 
     if (user) {
       return `
+        <a href="./index.html">Home</a>
         <a href="${helpHref}">Help</a>
         <a href="./account.html">${user.fullName.split(" ")[0]}</a>
         <a href="#" data-auth-logout>Logout</a>
@@ -242,6 +243,7 @@
     }
 
     return `
+      <a href="./index.html">Home</a>
       <a href="${helpHref}">Help</a>
       <a href="./register.html">Register</a>
       <a href="./login.html">Login</a>
