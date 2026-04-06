@@ -8,14 +8,14 @@
       name="description"
       content="Discover premium sample packs across multiple genres with fast browsing and instant audio previews."
     />
-    <link rel="stylesheet" href="./styles.css?v=20260406-6" />
+    <link rel="stylesheet" href="./styles.css?v=20260406-10" />
     <script>
       if (window.location.hash) {
         history.replaceState(null, "", window.location.pathname + window.location.search);
       }
     </script>
   </head>
-  <body class="page-home">
+  <body class="page-home page-catalog">
     <div class="site-shell" id="top">
       <header class="site-header">
         <div class="utility-bar" aria-label="Store utilities">
@@ -27,7 +27,7 @@
             />
           </a>
 
-          <form class="search-bar" action="./catalog.html" method="get" role="search">
+          <form class="search-bar" action="./index.html" method="get" role="search">
             <label class="sr-only" for="site-search">Search sample packs</label>
             <input
               id="site-search"
@@ -38,11 +38,11 @@
             <button type="submit" aria-label="Search">Search</button>
           </form>
 
-          <div class="utility-links" data-help-href="#contact">
-            <a href="#contact">Help</a>
+          <div class="utility-links" data-help-href="./help.html">
+            <a href="./help.html">Help</a>
             <a href="./register.html">Register</a>
             <a href="./login.html">Login</a>
-            <a href="./catalog.html">USD $</a>
+            <a href="./index.html">USD $</a>
           </div>
 
           <a class="cart-pill" href="./cart.html" aria-label="View cart">
@@ -70,117 +70,73 @@
         <div class="header-tools">
           <nav class="site-nav" aria-label="Main navigation">
             <a href="./index.html" aria-current="page">Home</a>
-            <a href="./catalog.html">Browse</a>
-            <a href="./catalog.html">Genres</a>
-            <a href="#featured-packs">Formats</a>
-            <a href="./catalog.html">Bundles</a>
-            <a href="#preview-experience">Previews</a>
-            <a href="#new-arrivals">New</a>
-            <a href="#featured-packs">Presets</a>
+            <a href="./index.html#catalog-grid">Genres</a>
+            <a href="./index.html#catalog-grid">Formats</a>
+            <a href="./index.html#catalog-grid">Bundles</a>
+            <a href="./help.html">Previews</a>
+            <a href="./index.html#catalog-grid">New</a>
           </nav>
         </div>
 
       </header>
 
       <main class="page">
-        <section class="section" id="featured-packs">
-          <div class="section-heading-row">
+        <section class="section catalog-hero">
+          <div class="catalog-intro">
             <div class="section-heading">
-              <p class="eyebrow">Featured Packs</p>
-              <h2>Start browsing the strongest packs right away.</h2>
+              <p class="eyebrow">Browse</p>
+              <h1 class="catalog-title">Start directly from the full Smooth Samples catalog.</h1>
               <p>
-                No long intro section first. The homepage now opens directly into
-                the product selection, so the packs stay front and center.
+                The homepage now opens on the storefront itself, with search,
+                genre filters, sort controls, and the live pack wall front and center.
               </p>
             </div>
-            <a class="section-link" href="./catalog.html">Explore More Packs</a>
+
+            <p class="catalog-search-summary" id="catalog-search-summary">
+              Browse the full catalog and refine by genre or search term.
+            </p>
           </div>
 
-          <div class="pack-grid" id="home-featured-grid">
-            <article class="pack-card pack-card-status">
-              <h3>Loading featured packs...</h3>
-              <p>The homepage is connecting to the backend API.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" id="new-arrivals">
-          <div class="section-heading-row">
-            <div class="section-heading">
-              <p class="eyebrow">New Arrivals</p>
-              <h2>Recent drops, kept easy to scan.</h2>
-            </div>
-            <a class="section-link" href="#featured-packs">Browse Featured</a>
-          </div>
-
-          <div class="release-grid" id="home-new-grid">
-            <article class="release-card release-card-status">
-              <h3>Loading new arrivals...</h3>
-              <p>Newest packs will appear here from the backend.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section preview-section" id="preview-experience">
-          <div class="section-heading-row">
-            <div class="section-heading">
-              <p class="eyebrow">Preview Experience</p>
-              <h2>Listen before you commit.</h2>
-              <p>
-                The final version can include protected preview playback, short
-                audio snippets, and catalog browsing without login.
-              </p>
-            </div>
-            <a class="section-link" href="#contact">Learn More</a>
-          </div>
-
-          <div class="preview-panel">
-            <div class="preview-copy">
-              <p class="preview-label">Preview player concept</p>
-              <h3>Pack preview: Midnight Pressure</h3>
-              <p>
-                A future player area can live here, with waveform, pack info,
-                track list, and protected stream controls.
-              </p>
-            </div>
-            <div class="preview-demo" aria-label="Demo audio player">
-              <div class="preview-demo-top">
-                <strong>Now playing</strong>
-                <span>Secure preview mode</span>
+          <div class="catalog-main catalog-main-storefront">
+            <div class="catalog-storefront-toolbar" aria-label="Catalog controls">
+              <div class="catalog-toolbar-row">
+                <p class="catalog-toolbar-label">Shop by genre</p>
+                <div class="filter-chips filter-chips-storefront" id="catalog-filter-chips">
+                  <button class="filter-chip is-active" type="button" data-genre="">All</button>
+                </div>
               </div>
-              <div class="waveform" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="preview-demo-bottom">
-                <span>00:18</span>
-                <span>00:45</span>
-              </div>
-              <a class="btn btn-primary" href="#contact">Request Early Access</a>
-            </div>
-          </div>
-        </section>
 
-        <section class="section cta-section" id="contact">
-          <p class="eyebrow">Ready to build the catalog?</p>
-          <h2>Shape a storefront that sounds as good as it looks.</h2>
-          <p>
-            This direction keeps the commercial structure of a larger sample
-            store, but presents it in a cleaner and more modern way.
-          </p>
-          <div class="cta-actions">
-            <a class="btn btn-secondary" href="./catalog.html">Open Catalog Page</a>
-            <a class="btn btn-primary" href="#top">Back to Top</a>
+              <div class="catalog-results-meta">
+                <div class="catalog-results-copy">
+                  <p class="catalog-results-kicker">Available now</p>
+                  <p class="catalog-results-count" id="catalog-results-count">Loading results...</p>
+                </div>
+
+                <div class="sort-control sort-control-storefront">
+                  <label for="catalog-sort">Sort</label>
+                  <select id="catalog-sort" name="catalog-sort">
+                    <option>Newest</option>
+                    <option>Best Sellers</option>
+                    <option>Price: Low to High</option>
+                    <option>Editor Picks</option>
+                  </select>
+                </div>
+
+                <div class="catalog-pagination" aria-label="Catalog pages">
+                  <span class="is-active">1</span>
+                  <span>2</span>
+                  <span>3</span>
+                  <span>4</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="catalog-grid-page catalog-grid-storefront" id="catalog-grid">
+              <article class="pack-card pack-card-status">
+                <h3>Loading catalog...</h3>
+                <p>The homepage is connecting to the backend API.</p>
+              </article>
+            </div>
           </div>
         </section>
       </main>
@@ -192,7 +148,7 @@
     <script src="./assets/js/store-api.js"></script>
     <script src="./assets/js/cart.js"></script>
     <script src="./assets/js/auth.js?v=20260406-9"></script>
-    <script src="./assets/js/search-ui.js?v=20260406-6"></script>
-    <script src="./assets/js/home.js?v=20260406-6"></script>
+    <script src="./assets/js/search-ui.js?v=20260406-10"></script>
+    <script src="./assets/js/catalog.js?v=20260406-10"></script>
   </body>
 </html>

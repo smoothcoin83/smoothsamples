@@ -15,6 +15,10 @@
   let currentGenre = "";
   let currentQuery = "";
   let allPacks = [];
+  const prioritySlugs = [
+    "hip-hop-drum-kit-collection-vol-01",
+    "trap-drum-kit-collection-vol-01",
+  ];
 
   function visualClassForGenre(genre) {
     const key = (genre || "").toLowerCase();
@@ -48,6 +52,10 @@
   function sortPacks(items) {
     const mode = sortSelect.value;
     const packs = [...items];
+    const priorityIndex = (slug) => {
+      const index = prioritySlugs.indexOf(slug);
+      return index === -1 ? Number.MAX_SAFE_INTEGER : index;
+    };
 
     if (mode === "Price: Low to High") {
       packs.sort((a, b) => a.price_usd - b.price_usd);
@@ -58,6 +66,13 @@
     } else {
       packs.sort((a, b) => b.rating - a.rating);
     }
+
+    packs.sort((a, b) => {
+      const aPriority = priorityIndex(a.slug);
+      const bPriority = priorityIndex(b.slug);
+      if (aPriority === bPriority) return 0;
+      return aPriority - bPriority;
+    });
 
     return packs;
   }
@@ -170,7 +185,10 @@
     if (currentQuery) params.set("q", currentQuery);
     if (currentGenre) params.set("genre", currentGenre);
 
-    const nextUrl = params.toString() ? `./catalog.html?${params.toString()}#catalog-grid` : "./catalog.html#catalog-grid";
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    const nextUrl = params.toString()
+      ? `./${currentPath}?${params.toString()}#catalog-grid`
+      : `./${currentPath}#catalog-grid`;
     history.replaceState(null, "", nextUrl);
   }
 
