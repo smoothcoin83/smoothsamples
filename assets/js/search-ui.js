@@ -35,8 +35,10 @@
   }
 
   function footerMarkup(query, count) {
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    const targetPage = currentPath === "catalog.html" ? "catalog.html" : "index.html";
     return `
-      <a class="search-suggestion-footer" href="./catalog.html?q=${encodeURIComponent(query)}">
+      <a class="search-suggestion-footer" href="./${targetPage}?q=${encodeURIComponent(query)}">
         View ${count} result${count === 1 ? "" : "s"} in catalog
       </a>
     `;
