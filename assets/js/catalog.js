@@ -118,6 +118,10 @@
               </div>
               <h3><a class="catalog-product-title-link" href="${productHref(pack.slug)}">${pack.title}</a></h3>
               <p class="catalog-product-summary">${pack.summary}</p>
+              <div class="catalog-product-delivery">
+                <span>Instant Download</span>
+                <span>Tax Included</span>
+              </div>
               <div class="catalog-product-price-row">
                 <p class="catalog-product-price">$${pack.price_usd} <span>USD</span></p>
                 <button
