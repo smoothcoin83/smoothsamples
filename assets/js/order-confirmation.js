@@ -1,4 +1,5 @@
 (function () {
+  const auth = window.SmoothSamplesAuth;
   const ORDER_STORAGE_KEY = "smooth-samples-last-order";
   const root = document.getElementById("order-confirmation-root");
   if (!root) return;
@@ -100,7 +101,11 @@
 
   try {
     const saved = window.sessionStorage.getItem(ORDER_STORAGE_KEY);
-    render(saved ? JSON.parse(saved) : null);
+    const order = saved ? JSON.parse(saved) : null;
+    if (order && auth?.saveOrder) {
+      auth.saveOrder(order);
+    }
+    render(order);
   } catch (error) {
     render(null);
   }

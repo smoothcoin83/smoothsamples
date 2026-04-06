@@ -68,6 +68,59 @@
       return;
     }
 
+    const orders = auth.getOrdersByEmail(user.email);
+
+    const orderMarkup = orders.length
+      ? `
+        <div class="account-orders">
+          ${orders
+            .map(
+              (order) => `
+                <article class="checkout-card account-order-card">
+                  <div class="account-order-top">
+                    <div>
+                      <p class="panel-label">Order ${order.id}</p>
+                      <strong>${new Date(order.createdAt).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}</strong>
+                    </div>
+                    <span class="account-order-total">$${order.pricing.total.toFixed(2)}</span>
+                  </div>
+                  <div class="checkout-review-list">
+                    ${order.items
+                      .map(
+                        (item) => `
+                          <article class="checkout-line-item">
+                            <div class="checkout-line-copy">
+                              <strong>${item.title}</strong>
+                              <span>${item.genre || "Pack"} · Qty ${item.quantity}</span>
+                            </div>
+                            <a class="btn btn-secondary" href="${item.href || "./catalog.html"}">Open Pack</a>
+                          </article>
+                        `
+                      )
+                      .join("")}
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      `
+      : `
+        <div class="checkout-card">
+          <p class="panel-label">Recent Orders</p>
+          <p class="checkout-success-note">
+            No demo orders yet. Once you complete checkout, your recent orders will appear here.
+          </p>
+          <div class="account-actions">
+            <a class="btn btn-primary" href="./catalog.html">Browse Packs</a>
+          </div>
+        </div>
+      `;
+
     root.innerHTML = `
       <section class="section account-hero">
         <div class="section-heading">
@@ -107,6 +160,8 @@
             </div>
           </aside>
         </div>
+
+        ${orderMarkup}
       </section>
     `;
   }

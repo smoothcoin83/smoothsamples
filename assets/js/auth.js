@@ -1,6 +1,7 @@
 (function () {
   const USERS_KEY = "smooth-samples-users-v1";
   const SESSION_KEY = "smooth-samples-session-v1";
+  const ORDER_HISTORY_KEY = "smooth-samples-orders-v1";
 
   function readUsers() {
     try {
@@ -92,6 +93,37 @@
     window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: null }));
   }
 
+  function readOrders() {
+    try {
+      return JSON.parse(window.localStorage.getItem(ORDER_HISTORY_KEY) || "[]").filter(
+        (order) => order && order.id
+      );
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function writeOrders(orders) {
+    window.localStorage.setItem(ORDER_HISTORY_KEY, JSON.stringify(orders));
+  }
+
+  function saveOrder(order) {
+    if (!order || !order.id) return;
+
+    const orders = readOrders().filter((entry) => entry.id !== order.id);
+    orders.unshift(order);
+    writeOrders(orders.slice(0, 20));
+  }
+
+  function getOrdersByEmail(email) {
+    const normalizedEmail = normalizeEmail(email);
+    if (!normalizedEmail) return [];
+
+    return readOrders().filter(
+      (order) => normalizeEmail(order.customer?.email) === normalizedEmail
+    );
+  }
+
   function utilityMarkup(helpHref, user) {
     if (user) {
       return `
@@ -148,6 +180,9 @@
     register,
     login,
     logout,
+    readOrders,
+    saveOrder,
+    getOrdersByEmail,
     renderUtilityLinks,
   };
 })();

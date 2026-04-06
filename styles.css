@@ -1841,6 +1841,35 @@ button {
   gap: 12px;
 }
 
+.account-orders {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.account-order-card {
+  gap: 14px;
+}
+
+.account-order-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.account-order-top strong {
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+.account-order-total {
+  color: var(--accent-red);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
 .account-detail {
   display: grid;
   gap: 4px;
@@ -3038,6 +3067,11 @@ button {
   .auth-layout,
   .account-layout {
     grid-template-columns: 1fr;
+  }
+
+  .account-order-top {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .cart-quantity {
