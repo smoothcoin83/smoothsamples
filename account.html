@@ -8,7 +8,7 @@
       name="description"
       content="Demo account area for Smooth Samples."
     />
-    <link rel="stylesheet" href="./styles.css?v=20260406-8" />
+    <link rel="stylesheet" href="./styles.css?v=20260406-12" />
   </head>
   <body class="page-account">
     <div class="site-shell" id="top">
@@ -17,13 +17,13 @@
           <a class="utility-logo" href="./index.html" aria-label="Smooth Samples home">
             <img class="utility-logo-image" src="./assets/logo/smooth-samples-logo-latest-crop-test-2.png" alt="Smooth Samples logo" />
           </a>
-          <form class="search-bar" action="./catalog.html" method="get" role="search">
+          <form class="search-bar" action="./index.html" method="get" role="search">
             <label class="sr-only" for="account-search">Search sample packs</label>
             <input id="account-search" name="q" type="search" placeholder="Search packs, genres, bundles" />
             <button type="submit" aria-label="Search">Search</button>
           </form>
-          <div class="utility-links" data-help-href="./index.html#contact">
-            <a href="./index.html#contact">Help</a>
+          <div class="utility-links" data-help-href="./help.html">
+            <a href="./help.html">Help</a>
             <a href="./account.html">Account</a>
             <a href="#">Logout</a>
             <a href="./catalog.html">USD $</a>
@@ -42,6 +42,17 @@
           </a>
           <p class="brand-note">A simple demo account layer for a more complete storefront flow.</p>
         </div>
+
+        <div class="header-tools">
+          <nav class="site-nav" aria-label="Main navigation">
+            <a href="./index.html">Home</a>
+            <a href="./catalog.html">Catalog</a>
+            <a href="./catalog.html#catalog-grid">Genres</a>
+            <a href="./catalog.html#catalog-grid">Formats</a>
+            <a href="./help.html">Help</a>
+            <a class="is-current" href="./account.html" aria-current="page">Account</a>
+          </nav>
+        </div>
       </header>
 
       <main class="page" id="account-root"></main>
@@ -53,7 +64,7 @@
     <script src="./assets/js/store-api.js"></script>
     <script src="./assets/js/cart.js"></script>
     <script src="./assets/js/auth.js?v=20260406-9"></script>
-    <script src="./assets/js/search-ui.js?v=20260406-8"></script>
-    <script src="./assets/js/auth-page.js?v=20260406-8"></script>
+    <script src="./assets/js/search-ui.js?v=20260406-12"></script>
+    <script src="./assets/js/auth-page.js?v=20260406-12"></script>
   </body>
 </html>
