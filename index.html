@@ -8,7 +8,7 @@
       name="description"
       content="Discover premium sample packs across multiple genres with fast browsing and instant audio previews."
     />
-    <link rel="stylesheet" href="./styles.css?v=20260406-10" />
+    <link rel="stylesheet" href="./styles.css?v=20260406-11" />
     <script>
       if (window.location.hash) {
         history.replaceState(null, "", window.location.pathname + window.location.search);
@@ -84,17 +84,32 @@
         <section class="section catalog-hero">
           <div class="catalog-intro">
             <div class="section-heading">
-              <p class="eyebrow">Browse</p>
-              <h1 class="catalog-title">Start directly from the full Smooth Samples catalog.</h1>
+              <p class="eyebrow">Storefront</p>
+              <h1 class="catalog-title">Browse packs, find the strongest drops, and check out fast.</h1>
               <p>
-                The homepage now opens on the storefront itself, with search,
-                genre filters, sort controls, and the live pack wall front and center.
+                The homepage now opens on the live storefront, with the strongest
+                real packs pinned first and the full catalog ready to filter in place.
               </p>
             </div>
 
             <p class="catalog-search-summary" id="catalog-search-summary">
               Browse the full catalog and refine by genre or search term.
             </p>
+
+            <div class="catalog-home-highlights" aria-label="Storefront highlights">
+              <a class="catalog-home-highlight" href="./product-hip-hop-drum-kit-collection-vol-01.html">
+                <span class="catalog-home-highlight-label">Featured Pack</span>
+                <strong>Hip Hop Drum Kit Collection Vol 01</strong>
+              </a>
+              <a class="catalog-home-highlight" href="./product-trap-drum-kit-collection-vol-01.html">
+                <span class="catalog-home-highlight-label">Fresh Drop</span>
+                <strong>Trap Drum Kit Collection Vol 01</strong>
+              </a>
+              <a class="catalog-home-highlight catalog-home-highlight-muted" href="./account.html">
+                <span class="catalog-home-highlight-label">Secure Flow</span>
+                <strong>Account, cart, checkout, and order history are already connected.</strong>
+              </a>
+            </div>
           </div>
 
           <div class="catalog-main catalog-main-storefront">
@@ -148,7 +163,7 @@
     <script src="./assets/js/store-api.js"></script>
     <script src="./assets/js/cart.js"></script>
     <script src="./assets/js/auth.js?v=20260406-9"></script>
-    <script src="./assets/js/search-ui.js?v=20260406-10"></script>
-    <script src="./assets/js/catalog.js?v=20260406-10"></script>
+    <script src="./assets/js/search-ui.js?v=20260406-11"></script>
+    <script src="./assets/js/catalog.js?v=20260406-11"></script>
   </body>
 </html>

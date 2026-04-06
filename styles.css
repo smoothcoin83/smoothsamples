@@ -1078,6 +1078,47 @@ button {
   padding-bottom: 14px;
 }
 
+.catalog-home-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.catalog-home-highlight {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid rgba(35, 20, 23, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 242, 242, 0.96));
+  color: #201718;
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.catalog-home-highlight:hover {
+  transform: translateY(-2px);
+  border-color: rgba(184, 21, 39, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(250, 245, 245, 1));
+}
+
+.catalog-home-highlight-label {
+  color: #8b202f;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.catalog-home-highlight strong {
+  font-size: 0.96rem;
+  line-height: 1.25;
+}
+
+.catalog-home-highlight-muted {
+  background: linear-gradient(180deg, rgba(246, 246, 246, 0.98), rgba(239, 239, 239, 0.98));
+}
+
 .page-catalog .catalog-title {
   font-size: clamp(1.8rem, 3vw, 2.45rem);
   line-height: 1;
@@ -2805,6 +2846,10 @@ button {
 
   .catalog-storefront-toolbar {
     gap: 14px;
+  }
+
+  .catalog-home-highlights {
+    grid-template-columns: 1fr;
   }
 
   .catalog-results-meta {
