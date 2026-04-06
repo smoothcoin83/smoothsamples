@@ -37,11 +37,11 @@
           <strong>$${summary.subtotal.toFixed(2)}</strong>
         </div>
         <div class="cart-summary-row">
-          <span>Tax (${Math.round(summary.vatRate * 100)}%)</span>
-          <strong>$${summary.vat.toFixed(2)}</strong>
+          <span>Taxes</span>
+          <strong>Included</strong>
         </div>
         <div class="cart-summary-row cart-summary-total">
-          <span>Total</span>
+          <span>Total (Tax Included)</span>
           <strong>$${summary.total.toFixed(2)}</strong>
         </div>
       </div>

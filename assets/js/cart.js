@@ -3,8 +3,6 @@
   if (!api) return;
 
   const STORAGE_KEY = "smooth-samples-cart-v1";
-  const VAT_RATE = 0.22;
-
   function normalizeItem(item) {
     if (!item || typeof item !== "object") return null;
 
@@ -49,15 +47,15 @@
   function pricing(items) {
     const summary = totals(items);
     const subtotal = summary.total;
-    const vat = Number((subtotal * VAT_RATE).toFixed(2));
-    const total = Number((subtotal + vat).toFixed(2));
+    const vat = 0;
+    const total = Number(subtotal.toFixed(2));
 
     return {
       items: summary.items,
       subtotal,
       vat,
       total,
-      vatRate: VAT_RATE,
+      vatRate: 0,
     };
   }
 

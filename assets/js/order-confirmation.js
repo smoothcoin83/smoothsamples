@@ -80,11 +80,11 @@
                 <strong>$${order.pricing.subtotal.toFixed(2)}</strong>
               </div>
               <div class="cart-summary-row">
-                <span>Tax (${Math.round(order.pricing.vatRate * 100)}%)</span>
-                <strong>$${order.pricing.vat.toFixed(2)}</strong>
+                <span>Taxes</span>
+                <strong>Included</strong>
               </div>
               <div class="cart-summary-row cart-summary-total">
-                <span>Total</span>
+                <span>Total (Tax Included)</span>
                 <strong>$${order.pricing.total.toFixed(2)}</strong>
               </div>
               <div class="cart-summary-actions">
