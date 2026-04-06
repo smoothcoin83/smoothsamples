@@ -71,6 +71,13 @@
     const cart = window.SmoothSamplesCart;
     const orders = await auth.syncOrders();
     const cartItems = cart?.readCart?.() || [];
+    const accountCreatedLabel = user.createdAt
+      ? new Date(user.createdAt).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      : "Recently";
 
     const orderMarkup = orders.length
       ? `
@@ -184,6 +191,14 @@
                 <span>Status</span>
                 <strong>Demo Member</strong>
               </div>
+              <div class="account-detail">
+                <span>Security</span>
+                <strong>Protected backend session</strong>
+              </div>
+              <div class="account-detail">
+                <span>Member Since</span>
+                <strong>${accountCreatedLabel}</strong>
+              </div>
             </div>
           </div>
 
@@ -193,6 +208,7 @@
               <a class="btn btn-primary" href="./catalog.html">Browse Packs</a>
               <a class="btn btn-secondary" href="./cart.html">Open Cart</a>
               <a class="btn btn-secondary" href="./help.html">Open Help</a>
+              <a class="btn btn-secondary" href="./checkout.html">Secure Checkout</a>
               <a class="btn btn-secondary" href="#" data-auth-logout>Logout</a>
             </div>
           </aside>
