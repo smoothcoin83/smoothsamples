@@ -62,14 +62,14 @@
     const root = document.querySelector("#account-root");
     if (!root) return;
 
-    const user = auth.getCurrentUser();
+    const user = await auth.syncCurrentUser(true);
     if (!user) {
       window.location.href = "./login.html";
       return;
     }
 
     const cart = window.SmoothSamplesCart;
-    const orders = await auth.syncOrdersByEmail(user.email);
+    const orders = await auth.syncOrders();
     const cartItems = cart?.readCart?.() || [];
 
     const orderMarkup = orders.length

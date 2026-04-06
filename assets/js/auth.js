@@ -1,174 +1,8 @@
 (function () {
   const api = window.SmoothSamplesApi;
-  const USERS_KEY = "smooth-samples-users-v1";
-  const SESSION_KEY = "smooth-samples-session-v1";
   const ORDER_HISTORY_KEY = "smooth-samples-orders-v1";
-
-  function readUsers() {
-    try {
-      return JSON.parse(window.localStorage.getItem(USERS_KEY) || "[]").filter(
-        (user) => user && user.email
-      );
-    } catch (error) {
-      return [];
-    }
-  }
-
-  function writeUsers(users) {
-    window.localStorage.setItem(USERS_KEY, JSON.stringify(users));
-  }
-
-  function readSession() {
-    try {
-      return JSON.parse(window.localStorage.getItem(SESSION_KEY) || "null");
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function writeSession(session) {
-    if (!session) {
-      window.localStorage.removeItem(SESSION_KEY);
-      return;
-    }
-
-    window.localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-  }
-
-  function normalizeEmail(email) {
-    return String(email || "").trim().toLowerCase();
-  }
-
-  function getCurrentUser() {
-    const session = readSession();
-    if (!session || !session.email) return null;
-
-    const email = normalizeEmail(session.email);
-    return (
-      readUsers().find((user) => normalizeEmail(user.email) === email) || {
-        fullName: session.fullName || "Account",
-        email,
-      }
-    );
-  }
-
-  function upsertLocalUser(user) {
-    if (!user || !user.email) return;
-
-    const users = readUsers().filter(
-      (entry) => normalizeEmail(entry.email) !== normalizeEmail(user.email)
-    );
-    users.push({
-      fullName: user.fullName,
-      email: normalizeEmail(user.email),
-      createdAt: user.createdAt || new Date().toISOString(),
-    });
-    writeUsers(users);
-  }
-
-  async function request(path, payload) {
-    if (!api) {
-      throw new Error("API unavailable");
-    }
-
-    const response = await fetch(`${api.baseUrl}${path}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      throw new Error(data.error || "Request failed.");
-    }
-
-    return data;
-  }
-
-  async function register(payload) {
-    const fullName = String(payload.fullName || "").trim();
-    const email = normalizeEmail(payload.email);
-    const password = String(payload.password || "");
-    const createdAt = new Date().toISOString();
-
-    if (!fullName || !email || !password) {
-      throw new Error("Please complete all fields.");
-    }
-
-    if (api) {
-      try {
-        const response = await request("/auth/register", {
-          fullName,
-          email,
-          password,
-          createdAt,
-        });
-        const user = response.user;
-        upsertLocalUser(user);
-        writeSession({ email: user.email, fullName: user.fullName });
-        window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: user }));
-        return user;
-      } catch (error) {
-        if (/exists|complete/i.test(error.message)) {
-          throw error;
-        }
-        console.warn("Backend register failed, falling back to local demo auth.", error);
-      }
-    }
-
-    const users = readUsers();
-    if (users.some((user) => normalizeEmail(user.email) === email)) {
-      throw new Error("An account with this email already exists.");
-    }
-
-    const user = {
-      fullName,
-      email,
-      password,
-      createdAt,
-    };
-
-    users.push(user);
-    writeUsers(users);
-    writeSession({ email: user.email, fullName: user.fullName });
-    window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: user }));
-    return user;
-  }
-
-  async function login(payload) {
-    const email = normalizeEmail(payload.email);
-    const password = String(payload.password || "");
-
-    if (api) {
-      try {
-        const response = await request("/auth/login", { email, password });
-        const user = response.user;
-        upsertLocalUser(user);
-        writeSession({ email: user.email, fullName: user.fullName });
-        window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: user }));
-        return user;
-      } catch (error) {
-        if (/Incorrect email or password/i.test(error.message)) {
-          throw error;
-        }
-        console.warn("Backend login failed, falling back to local demo auth.", error);
-      }
-    }
-
-    const user = readUsers().find((entry) => normalizeEmail(entry.email) === email);
-    if (!user || user.password !== password) {
-      throw new Error("Incorrect email or password.");
-    }
-
-    writeSession({ email: user.email, fullName: user.fullName });
-    window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: user }));
-    return user;
-  }
-
-  function logout() {
-    writeSession(null);
-    window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: null }));
-  }
+  let currentUser = null;
+  let authStatePromise = null;
 
   function readOrders() {
     try {
@@ -184,19 +18,98 @@
     window.localStorage.setItem(ORDER_HISTORY_KEY, JSON.stringify(orders));
   }
 
+  function normalizeEmail(email) {
+    return String(email || "").trim().toLowerCase();
+  }
+
+  async function syncCurrentUser(force = false) {
+    if (!api) {
+      currentUser = null;
+      return null;
+    }
+
+    if (!force && authStatePromise) {
+      return authStatePromise;
+    }
+
+    authStatePromise = api
+      .fetchJson("/auth/me")
+      .then((data) => {
+        currentUser = data.user || null;
+        return currentUser;
+      })
+      .catch(() => {
+        currentUser = null;
+        return null;
+      });
+
+    return authStatePromise;
+  }
+
+  function getCurrentUser() {
+    return currentUser;
+  }
+
+  async function register(payload) {
+    const fullName = String(payload.fullName || "").trim();
+    const email = normalizeEmail(payload.email);
+    const password = String(payload.password || "");
+
+    if (!fullName || !email || !password) {
+      throw new Error("Please complete all fields.");
+    }
+
+    const response = await api.postJson("/auth/register", {
+      fullName,
+      email,
+      password,
+      createdAt: new Date().toISOString(),
+    });
+
+    currentUser = response.user || null;
+    authStatePromise = Promise.resolve(currentUser);
+    window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: currentUser }));
+    return currentUser;
+  }
+
+  async function login(payload) {
+    const email = normalizeEmail(payload.email);
+    const password = String(payload.password || "");
+
+    const response = await api.postJson("/auth/login", { email, password });
+    currentUser = response.user || null;
+    authStatePromise = Promise.resolve(currentUser);
+    window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: currentUser }));
+    return currentUser;
+  }
+
+  async function logout() {
+    try {
+      await api.postJson("/auth/logout", {});
+    } catch (error) {
+      console.warn("Logout request failed.", error);
+    }
+    currentUser = null;
+    authStatePromise = Promise.resolve(null);
+    window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: null }));
+  }
+
   async function saveOrder(order) {
-    if (!order || !order.id) return;
+    if (!order || !order.id) return false;
 
     const orders = readOrders().filter((entry) => entry.id !== order.id);
     orders.unshift(order);
     writeOrders(orders.slice(0, 20));
 
-    if (!api) return;
+    const user = currentUser || (await syncCurrentUser());
+    if (!user) return false;
 
     try {
-      await request("/orders", order);
+      await api.postJson("/orders", order);
+      return true;
     } catch (error) {
-      console.warn("Backend order save failed, kept locally only.", error);
+      console.warn("Protected order save failed, kept locally only.", error);
+      return false;
     }
   }
 
@@ -209,23 +122,21 @@
     );
   }
 
-  async function syncOrdersByEmail(email) {
-    const normalizedEmail = normalizeEmail(email);
-    if (!normalizedEmail || !api) {
-      return getOrdersByEmail(normalizedEmail);
-    }
+  async function syncOrders() {
+    const user = currentUser || (await syncCurrentUser());
+    if (!user) return [];
 
     try {
-      const response = await api.fetchJson(`/orders?email=${encodeURIComponent(normalizedEmail)}`);
+      const response = await api.fetchJson("/orders");
       const remoteOrders = (response.items || []).filter((order) => order && order.id);
       const localOthers = readOrders().filter(
-        (order) => normalizeEmail(order.customer?.email) !== normalizedEmail
+        (order) => normalizeEmail(order.customer?.email) !== normalizeEmail(user.email)
       );
       writeOrders([...remoteOrders, ...localOthers]);
       return remoteOrders;
     } catch (error) {
-      console.warn("Backend order sync failed, using local history.", error);
-      return getOrdersByEmail(normalizedEmail);
+      console.warn("Protected order sync failed, using local history.", error);
+      return getOrdersByEmail(user.email);
     }
   }
 
@@ -252,19 +163,17 @@
   }
 
   function renderUtilityLinks() {
-    const user = getCurrentUser();
-
     document.querySelectorAll(".utility-links").forEach((container) => {
-      container.innerHTML = utilityMarkup(user);
+      container.innerHTML = utilityMarkup(currentUser);
     });
   }
 
-  document.addEventListener("click", (event) => {
+  document.addEventListener("click", async (event) => {
     const logoutTrigger = event.target.closest("[data-auth-logout]");
     if (!logoutTrigger) return;
 
     event.preventDefault();
-    logout();
+    await logout();
 
     if (window.location.pathname.endsWith("/account.html") || window.location.pathname.endsWith("account.html")) {
       window.location.href = "./index.html";
@@ -275,11 +184,12 @@
   });
 
   window.addEventListener("smoothsamples:auth-updated", renderUtilityLinks);
-  document.addEventListener("DOMContentLoaded", renderUtilityLinks);
-  renderUtilityLinks();
+  document.addEventListener("DOMContentLoaded", async () => {
+    await syncCurrentUser();
+    renderUtilityLinks();
+  });
 
   window.SmoothSamplesAuth = {
-    readUsers,
     getCurrentUser,
     register,
     login,
@@ -287,7 +197,8 @@
     readOrders,
     saveOrder,
     getOrdersByEmail,
-    syncOrdersByEmail,
+    syncCurrentUser,
+    syncOrders,
     renderUtilityLinks,
   };
 })();

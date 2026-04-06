@@ -53,9 +53,9 @@
     return `SS-${Date.now().toString().slice(-8)}`;
   }
 
-  function render() {
+  async function render() {
     const items = cart.readCart();
-    const user = auth?.getCurrentUser?.();
+    const user = auth?.syncCurrentUser ? await auth.syncCurrentUser() : null;
 
     if (!items.length) {
       itemsRoot.innerHTML = `
