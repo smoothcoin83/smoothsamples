@@ -97,11 +97,14 @@
           <article class="${cardClass}">
             ${visualMarkup}
             <div class="catalog-product-copy">
-              <p class="pack-tag">${pack.genre}</p>
+              <div class="catalog-product-topline">
+                <p class="pack-tag">${pack.genre}</p>
+                <span class="catalog-product-badge">${pack.badge}</span>
+              </div>
               <h3><a class="catalog-product-title-link" href="${productHref(pack.slug)}">${pack.title}</a></h3>
               <p class="catalog-product-summary">${pack.summary}</p>
               <div class="catalog-product-price-row">
-                <p class="catalog-product-price">Price $${pack.price_usd} <span>USD</span></p>
+                <p class="catalog-product-price">$${pack.price_usd} <span>USD</span></p>
                 <button
                   type="button"
                   class="compact-add-button catalog-buy-button"
@@ -119,8 +122,9 @@
               <ul class="catalog-product-meta">
                 <li>${pack.contents.loops} ${pack.metric_labels?.primary || "loops"}</li>
                 <li>${secondMeta}</li>
-                <li>${pack.badge}</li>
+                <li>${pack.bpm_range || "Producer-ready"}</li>
               </ul>
+              <a class="catalog-product-link" href="${productHref(pack.slug)}">View details</a>
             </div>
           </article>
         `;

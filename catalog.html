@@ -8,7 +8,7 @@
       name="description"
       content="Browse the Smooth Samples catalog by genre, format, and bundle type."
     />
-    <link rel="stylesheet" href="./styles.css?v=20260406-3" />
+    <link rel="stylesheet" href="./styles.css?v=20260406-4" />
   </head>
   <body class="page-catalog">
     <div class="site-shell" id="top">
@@ -88,8 +88,8 @@
               <p class="eyebrow">Catalog</p>
               <h1 class="catalog-title">Browse the catalog like a real sample storefront.</h1>
               <p>
-                A cleaner product wall, stronger covers, and a faster filter bar
-                so the packs stay the real focus.
+                Search fast, filter by genre, and compare packs in a cleaner
+                retail-style product wall.
               </p>
             </div>
 
@@ -100,11 +100,19 @@
 
           <div class="catalog-main catalog-main-storefront">
             <div class="catalog-storefront-toolbar" aria-label="Catalog controls">
-              <div class="filter-chips filter-chips-storefront" id="catalog-filter-chips">
-                <button class="filter-chip is-active" type="button" data-genre="">All</button>
+              <div class="catalog-toolbar-row">
+                <p class="catalog-toolbar-label">Shop by genre</p>
+                <div class="filter-chips filter-chips-storefront" id="catalog-filter-chips">
+                  <button class="filter-chip is-active" type="button" data-genre="">All</button>
+                </div>
               </div>
 
               <div class="catalog-results-meta">
+                <div class="catalog-results-copy">
+                  <p class="catalog-results-kicker">Available now</p>
+                  <p class="catalog-results-count" id="catalog-results-count">Loading results...</p>
+                </div>
+
                 <div class="sort-control sort-control-storefront">
                   <label for="catalog-sort">Sort</label>
                   <select id="catalog-sort" name="catalog-sort">
@@ -114,8 +122,6 @@
                     <option>Editor Picks</option>
                   </select>
                 </div>
-
-                <p class="catalog-results-count" id="catalog-results-count">Loading results...</p>
 
                 <div class="catalog-pagination" aria-label="Catalog pages">
                   <span class="is-active">1</span>
@@ -155,7 +161,7 @@
     </div>
     <script src="./assets/js/store-api.js"></script>
     <script src="./assets/js/cart.js"></script>
-    <script src="./assets/js/search-ui.js?v=20260406-3"></script>
-    <script src="./assets/js/catalog.js?v=20260406-3"></script>
+    <script src="./assets/js/search-ui.js?v=20260406-4"></script>
+    <script src="./assets/js/catalog.js?v=20260406-4"></script>
   </body>
 </html>

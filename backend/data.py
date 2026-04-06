@@ -126,25 +126,24 @@ PACKS = [
         "tags": ["hip hop", "drums", "kit collection", "beatmaking"],
     },
     {
-        "id": 6,
-        "slug": "hip-hop-drum-kit-collection-vol-02",
-        "title": "Hip Hop Drum Kit Collection Vol 02",
-        "genre": "Hip Hop",
-        "price_usd": 17,
-        "rating": 4.8,
+        "id": 7,
+        "slug": "trap-drum-kit-collection-vol-01",
+        "title": "Trap Drum Kit Collection Vol 01",
+        "genre": "Trap",
+        "price_usd": 21,
+        "rating": 4.9,
         "badge": "Fresh Drop",
         "featured": True,
         "new_arrival": True,
         "formats": ["WAV", "ZIP"],
-        "summary": "5 custom hip hop drum kits with 35 clean, ready-to-use drum sounds.",
+        "summary": "10 custom trap drum kits with 90 hard-hitting drums, SFX, and 808s.",
         "description": (
-            "A tighter second hip hop drum kit release built for producers who want "
-            "a smaller, sharper set of drums for everyday beatmaking. Includes 5 custom "
-            "kits with kicks, snares, hats, open hats, crashes, rides, and percussion."
+            "A trap drum collection built for producers who want instant access to hard drums, "
+            "sharp hats, useful FX, and ready-to-use 808s without wasting time digging."
         ),
         "contents": {
-            "loops": 5,
-            "one_shots": 35,
+            "loops": 10,
+            "one_shots": 90,
             "presets": 0,
             "stems": 0,
         },
@@ -152,8 +151,8 @@ PACKS = [
             "primary": "kits",
             "secondary": "drum samples",
         },
-        "cover_image": "./assets/packs/smooth-samples-hip-hop-drum-kit-collection-vol-02-cover.png",
-        "tags": ["hip hop", "drums", "starter kit", "beatmaking"],
+        "cover_image": "./assets/packs/smooth-samples-trap-drum-kit-collection-vol-01-cover.png",
+        "tags": ["trap", "drums", "808", "kit collection", "beatmaking"],
     },
 ]
 
