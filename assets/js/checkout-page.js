@@ -8,6 +8,8 @@
   const itemsRoot = document.getElementById("checkout-items");
   const summaryRoot = document.getElementById("checkout-summary");
   const successNote = document.getElementById("checkout-success-note");
+  const heading = document.querySelector(".checkout-hero .section-heading p + h1");
+  const lead = document.querySelector(".checkout-hero .section-heading p + h1 + p");
 
   if (!form || !itemsRoot || !summaryRoot) return;
 
@@ -23,8 +25,11 @@
     `;
   }
 
-  function summaryMarkup(items) {
+  function summaryMarkup(items, user) {
     const summary = cart.pricing(items);
+    const authNotice = user
+      ? `<p class="checkout-success-note">Signed in as ${user.email}. This order will be attached to your account.</p>`
+      : `<p class="checkout-success-note">You need an account to place a secure order.</p>`;
 
     return `
       <div class="cart-summary-card">
@@ -45,6 +50,7 @@
           <span>Total (Tax Included)</span>
           <strong>$${summary.total.toFixed(2)}</strong>
         </div>
+        ${authNotice}
       </div>
     `;
   }
@@ -65,14 +71,45 @@
           <a class="btn btn-primary" href="./catalog.html">Browse Catalog</a>
         </article>
       `;
-      summaryRoot.innerHTML = summaryMarkup(items);
+      summaryRoot.innerHTML = summaryMarkup(items, user);
       form.hidden = true;
       return;
     }
 
     itemsRoot.innerHTML = items.map(itemMarkup).join("");
-    summaryRoot.innerHTML = summaryMarkup(items);
+    summaryRoot.innerHTML = summaryMarkup(items, user);
+
+    if (!user) {
+      form.hidden = true;
+      if (heading) heading.textContent = "Sign in before completing secure checkout.";
+      if (lead) {
+        lead.textContent =
+          "Orders are now protected by authenticated backend sessions. Log in or create an account to continue.";
+      }
+      itemsRoot.insertAdjacentHTML(
+        "afterbegin",
+        `
+          <article class="checkout-card">
+            <p class="panel-label">Authentication Required</p>
+            <p class="checkout-success-note">
+              Please sign in first. Your cart is preserved and waiting for you.
+            </p>
+            <div class="checkout-actions">
+              <a class="btn btn-primary" href="./login.html">Login</a>
+              <a class="btn btn-secondary" href="./register.html">Create Account</a>
+            </div>
+          </article>
+        `
+      );
+      return;
+    }
+
     form.hidden = false;
+    if (heading) heading.textContent = "Complete your order in one secure step.";
+    if (lead) {
+      lead.textContent =
+        "Your authenticated checkout is ready. Billing details and order summary stay connected to your account.";
+    }
 
     if (user) {
       const fullNameInput = form.elements.namedItem("full_name");
@@ -120,5 +157,6 @@
     window.location.href = "./order-confirmation.html";
   });
 
+  window.addEventListener("smoothsamples:auth-updated", render);
   render();
 })();
