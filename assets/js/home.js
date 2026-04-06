@@ -8,7 +8,7 @@
   const popularFilters = document.getElementById("home-popular-filters");
   const sortSelect = document.getElementById("home-sort-by");
 
-  if (!featuredGrid || !popularGrid || !newGrid || !popularFilters || !sortSelect) return;
+  if (!featuredGrid || !newGrid) return;
 
   let allPacks = [];
   let currentGenre = "";
@@ -43,7 +43,7 @@
 
   function sortPacks(items) {
     const packs = [...items];
-    const mode = sortSelect.value;
+    const mode = sortSelect ? sortSelect.value : "Best Sellers";
 
     if (mode === "Price: Low to High") {
       packs.sort((a, b) => a.price_usd - b.price_usd);
@@ -125,6 +125,8 @@
   }
 
   function renderPopular(packs) {
+    if (!popularGrid) return;
+
     const filtered = currentGenre
       ? packs.filter((pack) => pack.genre === currentGenre)
       : packs;
@@ -207,6 +209,8 @@
   }
 
   function renderFilters(packs) {
+    if (!popularFilters) return;
+
     const genres = [...new Set(packs.map((pack) => pack.genre))].filter((genre) =>
       ["Trap", "Lo-Fi", "House", "Drill", "Hip Hop"].includes(genre)
     );
@@ -219,6 +223,8 @@
   }
 
   function updateActiveFilters() {
+    if (!popularFilters) return;
+
     document.querySelectorAll("[data-home-genre]").forEach((element) => {
       const isAll = !currentGenre && element.dataset.homeGenre === "";
       const isMatch = element.dataset.homeGenre === currentGenre;
@@ -247,7 +253,7 @@
 
   document.addEventListener("click", (event) => {
     const trigger = event.target.closest("[data-home-genre]");
-    if (!trigger) return;
+    if (!trigger || !popularGrid) return;
 
     event.preventDefault();
     currentGenre = trigger.dataset.homeGenre || "";
@@ -255,9 +261,11 @@
     updateActiveFilters();
   });
 
-  sortSelect.addEventListener("change", () => {
-    renderPopular(allPacks);
-  });
+  if (sortSelect && popularGrid) {
+    sortSelect.addEventListener("change", () => {
+      renderPopular(allPacks);
+    });
+  }
 
   loadHomeData();
 })();
