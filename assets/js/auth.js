@@ -1,4 +1,5 @@
 (function () {
+  const api = window.SmoothSamplesApi;
   const USERS_KEY = "smooth-samples-users-v1";
   const SESSION_KEY = "smooth-samples-session-v1";
   const ORDER_HISTORY_KEY = "smooth-samples-orders-v1";
@@ -43,16 +44,76 @@
     if (!session || !session.email) return null;
 
     const email = normalizeEmail(session.email);
-    return readUsers().find((user) => normalizeEmail(user.email) === email) || null;
+    return (
+      readUsers().find((user) => normalizeEmail(user.email) === email) || {
+        fullName: session.fullName || "Account",
+        email,
+      }
+    );
   }
 
-  function register(payload) {
+  function upsertLocalUser(user) {
+    if (!user || !user.email) return;
+
+    const users = readUsers().filter(
+      (entry) => normalizeEmail(entry.email) !== normalizeEmail(user.email)
+    );
+    users.push({
+      fullName: user.fullName,
+      email: normalizeEmail(user.email),
+      createdAt: user.createdAt || new Date().toISOString(),
+    });
+    writeUsers(users);
+  }
+
+  async function request(path, payload) {
+    if (!api) {
+      throw new Error("API unavailable");
+    }
+
+    const response = await fetch(`${api.baseUrl}${path}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(data.error || "Request failed.");
+    }
+
+    return data;
+  }
+
+  async function register(payload) {
     const fullName = String(payload.fullName || "").trim();
     const email = normalizeEmail(payload.email);
     const password = String(payload.password || "");
+    const createdAt = new Date().toISOString();
 
     if (!fullName || !email || !password) {
       throw new Error("Please complete all fields.");
+    }
+
+    if (api) {
+      try {
+        const response = await request("/auth/register", {
+          fullName,
+          email,
+          password,
+          createdAt,
+        });
+        const user = response.user;
+        upsertLocalUser(user);
+        writeSession({ email: user.email, fullName: user.fullName });
+        window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: user }));
+        return user;
+      } catch (error) {
+        if (/exists|complete/i.test(error.message)) {
+          throw error;
+        }
+        console.warn("Backend register failed, falling back to local demo auth.", error);
+      }
     }
 
     const users = readUsers();
@@ -64,26 +125,42 @@
       fullName,
       email,
       password,
-      createdAt: new Date().toISOString(),
+      createdAt,
     };
 
     users.push(user);
     writeUsers(users);
-    writeSession({ email: user.email });
+    writeSession({ email: user.email, fullName: user.fullName });
     window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: user }));
     return user;
   }
 
-  function login(payload) {
+  async function login(payload) {
     const email = normalizeEmail(payload.email);
     const password = String(payload.password || "");
+
+    if (api) {
+      try {
+        const response = await request("/auth/login", { email, password });
+        const user = response.user;
+        upsertLocalUser(user);
+        writeSession({ email: user.email, fullName: user.fullName });
+        window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: user }));
+        return user;
+      } catch (error) {
+        if (/Incorrect email or password/i.test(error.message)) {
+          throw error;
+        }
+        console.warn("Backend login failed, falling back to local demo auth.", error);
+      }
+    }
 
     const user = readUsers().find((entry) => normalizeEmail(entry.email) === email);
     if (!user || user.password !== password) {
       throw new Error("Incorrect email or password.");
     }
 
-    writeSession({ email: user.email });
+    writeSession({ email: user.email, fullName: user.fullName });
     window.dispatchEvent(new CustomEvent("smoothsamples:auth-updated", { detail: user }));
     return user;
   }
@@ -107,12 +184,20 @@
     window.localStorage.setItem(ORDER_HISTORY_KEY, JSON.stringify(orders));
   }
 
-  function saveOrder(order) {
+  async function saveOrder(order) {
     if (!order || !order.id) return;
 
     const orders = readOrders().filter((entry) => entry.id !== order.id);
     orders.unshift(order);
     writeOrders(orders.slice(0, 20));
+
+    if (!api) return;
+
+    try {
+      await request("/orders", order);
+    } catch (error) {
+      console.warn("Backend order save failed, kept locally only.", error);
+    }
   }
 
   function getOrdersByEmail(email) {
@@ -124,7 +209,29 @@
     );
   }
 
-  function utilityMarkup(helpHref, user) {
+  async function syncOrdersByEmail(email) {
+    const normalizedEmail = normalizeEmail(email);
+    if (!normalizedEmail || !api) {
+      return getOrdersByEmail(normalizedEmail);
+    }
+
+    try {
+      const response = await api.fetchJson(`/orders?email=${encodeURIComponent(normalizedEmail)}`);
+      const remoteOrders = (response.items || []).filter((order) => order && order.id);
+      const localOthers = readOrders().filter(
+        (order) => normalizeEmail(order.customer?.email) !== normalizedEmail
+      );
+      writeOrders([...remoteOrders, ...localOthers]);
+      return remoteOrders;
+    } catch (error) {
+      console.warn("Backend order sync failed, using local history.", error);
+      return getOrdersByEmail(normalizedEmail);
+    }
+  }
+
+  function utilityMarkup(user) {
+    const helpHref = "./help.html";
+
     if (user) {
       return `
         <a href="${helpHref}">Help</a>
@@ -146,12 +253,7 @@
     const user = getCurrentUser();
 
     document.querySelectorAll(".utility-links").forEach((container) => {
-      const fallbackHelp =
-        container.dataset.helpHref ||
-        container.querySelector("a")?.getAttribute("href") ||
-        "./index.html#contact";
-
-      container.innerHTML = utilityMarkup(fallbackHelp, user);
+      container.innerHTML = utilityMarkup(user);
     });
   }
 
@@ -183,6 +285,7 @@
     readOrders,
     saveOrder,
     getOrdersByEmail,
+    syncOrdersByEmail,
     renderUtilityLinks,
   };
 })();

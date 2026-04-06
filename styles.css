@@ -1870,6 +1870,11 @@ button {
   font-weight: 700;
 }
 
+.help-faq-list {
+  display: grid;
+  gap: 12px;
+}
+
 .account-detail {
   display: grid;
   gap: 4px;

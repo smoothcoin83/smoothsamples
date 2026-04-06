@@ -14,12 +14,12 @@
     if (!form) return;
 
     const message = document.querySelector("#register-message");
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const formData = new FormData(form);
 
       try {
-        auth.register({
+        await auth.register({
           fullName: formData.get("full_name"),
           email: formData.get("email"),
           password: formData.get("password"),
@@ -39,12 +39,12 @@
     if (!form) return;
 
     const message = document.querySelector("#login-message");
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const formData = new FormData(form);
 
       try {
-        auth.login({
+        await auth.login({
           email: formData.get("email"),
           password: formData.get("password"),
         });
@@ -58,7 +58,7 @@
     });
   }
 
-  function initAccountPage() {
+  async function initAccountPage() {
     const root = document.querySelector("#account-root");
     if (!root) return;
 
@@ -68,7 +68,9 @@
       return;
     }
 
-    const orders = auth.getOrdersByEmail(user.email);
+    const cart = window.SmoothSamplesCart;
+    const orders = await auth.syncOrdersByEmail(user.email);
+    const cartItems = cart?.readCart?.() || [];
 
     const orderMarkup = orders.length
       ? `
@@ -121,6 +123,40 @@
         </div>
       `;
 
+    const cartMarkup = cartItems.length
+      ? `
+        <div class="checkout-card">
+          <p class="panel-label">Current Cart</p>
+          <div class="checkout-review-list">
+            ${cartItems
+              .map(
+                (item) => `
+                  <article class="checkout-line-item">
+                    <div class="checkout-line-copy">
+                      <strong>${item.title}</strong>
+                      <span>${item.genre || "Pack"} · Qty ${item.quantity}</span>
+                    </div>
+                    <strong>$${(item.price_usd * item.quantity).toFixed(2)}</strong>
+                  </article>
+                `
+              )
+              .join("")}
+          </div>
+          <div class="account-actions">
+            <a class="btn btn-primary" href="./cart.html">Open Cart</a>
+          </div>
+        </div>
+      `
+      : `
+        <div class="checkout-card">
+          <p class="panel-label">Current Cart</p>
+          <p class="checkout-success-note">Your cart is empty right now. Add a few packs and continue from there.</p>
+          <div class="account-actions">
+            <a class="btn btn-primary" href="./catalog.html">Browse Catalog</a>
+          </div>
+        </div>
+      `;
+
     root.innerHTML = `
       <section class="section account-hero">
         <div class="section-heading">
@@ -156,19 +192,21 @@
             <div class="account-actions">
               <a class="btn btn-primary" href="./catalog.html">Browse Packs</a>
               <a class="btn btn-secondary" href="./cart.html">Open Cart</a>
+              <a class="btn btn-secondary" href="./help.html">Open Help</a>
               <a class="btn btn-secondary" href="#" data-auth-logout>Logout</a>
             </div>
           </aside>
         </div>
 
+        ${cartMarkup}
         ${orderMarkup}
       </section>
     `;
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
     initRegisterPage();
     initLoginPage();
-    initAccountPage();
+    await initAccountPage();
   });
 })();
