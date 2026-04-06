@@ -17,7 +17,7 @@
           <strong>${item.title}</strong>
           <span>${item.genre || "Pack"} · Qty ${item.quantity}</span>
         </div>
-        <strong>€${(item.price_eur * item.quantity).toFixed(2)}</strong>
+        <strong>$${(item.price_usd * item.quantity).toFixed(2)}</strong>
       </article>
     `;
   }
@@ -34,15 +34,15 @@
         </div>
         <div class="cart-summary-row">
           <span>Subtotal</span>
-          <strong>€${summary.subtotal.toFixed(2)}</strong>
+          <strong>$${summary.subtotal.toFixed(2)}</strong>
         </div>
         <div class="cart-summary-row">
-          <span>VAT (${Math.round(summary.vatRate * 100)}%)</span>
-          <strong>€${summary.vat.toFixed(2)}</strong>
+          <span>Tax (${Math.round(summary.vatRate * 100)}%)</span>
+          <strong>$${summary.vat.toFixed(2)}</strong>
         </div>
         <div class="cart-summary-row cart-summary-total">
           <span>Total</span>
-          <strong>€${summary.total.toFixed(2)}</strong>
+          <strong>$${summary.total.toFixed(2)}</strong>
         </div>
       </div>
     `;

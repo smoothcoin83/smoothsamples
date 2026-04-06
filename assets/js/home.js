@@ -46,7 +46,7 @@
     const mode = sortSelect.value;
 
     if (mode === "Price: Low to High") {
-      packs.sort((a, b) => a.price_eur - b.price_eur);
+      packs.sort((a, b) => a.price_usd - b.price_usd);
     } else if (mode === "Newest") {
       packs.sort((a, b) => Number(b.new_arrival) - Number(a.new_arrival));
     } else if (mode === "Editor Picks") {
@@ -80,7 +80,7 @@
           ${visualMarkup}
           <div class="pack-card-top">
             <p class="pack-tag">${pack.genre}</p>
-            <p class="pack-price">€${pack.price_eur}</p>
+            <p class="pack-price">$${pack.price_usd}</p>
           </div>
           <h3>${pack.title}</h3>
           <div class="pack-submeta">
@@ -109,7 +109,7 @@
               data-add-to-cart
               data-pack-slug="${pack.slug}"
               data-pack-title="${pack.title}"
-              data-pack-price="${pack.price_eur}"
+              data-pack-price="${pack.price_usd}"
               data-pack-genre="${pack.genre}"
               data-pack-href="${productHref(pack.slug)}"
               data-pack-cover="${coverImage}"
@@ -140,7 +140,7 @@
             <p>${pack.summary}</p>
           </div>
           <div class="compact-meta">
-            <span>€${pack.price_eur}</span>
+            <span>$${pack.price_usd}</span>
             <strong><a href="${productHref(pack.slug)}">View</a></strong>
             <button
               type="button"
@@ -148,7 +148,7 @@
               data-add-to-cart
               data-pack-slug="${pack.slug}"
               data-pack-title="${pack.title}"
-              data-pack-price="${pack.price_eur}"
+              data-pack-price="${pack.price_usd}"
               data-pack-genre="${pack.genre}"
               data-pack-href="${productHref(pack.slug)}"
               data-pack-cover="${coverImageForPack(pack)}"
@@ -176,7 +176,7 @@
           ${visualMarkup}
           <div class="release-top">
             <span class="release-badge">${pack.badge}</span>
-            <strong>€${pack.price_eur}</strong>
+            <strong>$${pack.price_usd}</strong>
           </div>
           <h3>${pack.title}</h3>
           <p>${pack.summary}</p>
@@ -191,7 +191,7 @@
               data-add-to-cart
               data-pack-slug="${pack.slug}"
               data-pack-title="${pack.title}"
-              data-pack-price="${pack.price_eur}"
+              data-pack-price="${pack.price_usd}"
               data-pack-genre="${pack.genre}"
               data-pack-href="${productHref(pack.slug)}"
               data-pack-cover="${coverImage}"

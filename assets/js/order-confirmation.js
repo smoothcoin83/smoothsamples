@@ -10,7 +10,7 @@
           <strong>${item.title}</strong>
           <span>${item.genre || "Pack"} · Qty ${item.quantity}</span>
         </div>
-        <strong>€${(item.price_eur * item.quantity).toFixed(2)}</strong>
+        <strong>$${(item.price_usd * item.quantity).toFixed(2)}</strong>
       </article>
     `;
   }
@@ -77,15 +77,15 @@
               </div>
               <div class="cart-summary-row">
                 <span>Subtotal</span>
-                <strong>€${order.pricing.subtotal.toFixed(2)}</strong>
+                <strong>$${order.pricing.subtotal.toFixed(2)}</strong>
               </div>
               <div class="cart-summary-row">
-                <span>VAT (${Math.round(order.pricing.vatRate * 100)}%)</span>
-                <strong>€${order.pricing.vat.toFixed(2)}</strong>
+                <span>Tax (${Math.round(order.pricing.vatRate * 100)}%)</span>
+                <strong>$${order.pricing.vat.toFixed(2)}</strong>
               </div>
               <div class="cart-summary-row cart-summary-total">
                 <span>Total</span>
-                <strong>€${order.pricing.total.toFixed(2)}</strong>
+                <strong>$${order.pricing.total.toFixed(2)}</strong>
               </div>
               <div class="cart-summary-actions">
                 <a class="btn btn-primary" href="./catalog.html">Shop More Packs</a>

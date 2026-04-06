@@ -28,7 +28,7 @@
         ${thumb}
         <span class="search-suggestion-copy">
           <strong>${pack.title}</strong>
-          <span>${pack.genre} · €${pack.price_eur}</span>
+          <span>${pack.genre} · $${pack.price_usd}</span>
         </span>
       </a>
     `;

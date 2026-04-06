@@ -37,14 +37,14 @@
       eyebrow.textContent = `${pack.genre} Pack`;
       lead.textContent = pack.description;
       reviewRating.textContent = `${pack.rating}/5 producer rating`;
-      price.textContent = `€${pack.price_eur}`;
+      price.textContent = `$${pack.price_usd}`;
       badge.textContent = pack.badge;
 
       if (addToCartButton) {
         addToCartButton.dataset.addToCart = "true";
         addToCartButton.dataset.packSlug = pack.slug;
         addToCartButton.dataset.packTitle = pack.title;
-        addToCartButton.dataset.packPrice = pack.price_eur;
+        addToCartButton.dataset.packPrice = pack.price_usd;
         addToCartButton.dataset.packGenre = pack.genre;
         addToCartButton.dataset.packHref = api.productHref(pack.slug, pack.title);
         addToCartButton.dataset.packCover = pack.cover_image || "";

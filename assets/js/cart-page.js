@@ -22,7 +22,7 @@
           <p>Instant digital delivery. Added to your demo cart.</p>
         </div>
         <div class="cart-item-controls">
-          <span class="cart-item-price">€${item.price_eur}</span>
+          <span class="cart-item-price">$${item.price_usd}</span>
           <div class="cart-quantity">
             <button type="button" data-cart-qty="${item.slug}" data-delta="-1" aria-label="Decrease quantity">-</button>
             <strong>${item.quantity}</strong>
@@ -46,15 +46,15 @@
         </div>
         <div class="cart-summary-row">
           <span>Subtotal</span>
-          <strong>€${summary.subtotal.toFixed(2)}</strong>
+          <strong>$${summary.subtotal.toFixed(2)}</strong>
         </div>
         <div class="cart-summary-row">
-          <span>VAT (${Math.round(summary.vatRate * 100)}%)</span>
-          <strong>€${summary.vat.toFixed(2)}</strong>
+          <span>Tax (${Math.round(summary.vatRate * 100)}%)</span>
+          <strong>$${summary.vat.toFixed(2)}</strong>
         </div>
         <div class="cart-summary-row cart-summary-total">
           <span>Total</span>
-          <strong>€${summary.total.toFixed(2)}</strong>
+          <strong>$${summary.total.toFixed(2)}</strong>
         </div>
         <div class="cart-summary-actions">
           <a class="btn btn-primary" href="./checkout.html">Proceed to Checkout</a>

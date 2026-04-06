@@ -23,7 +23,7 @@ Recommended fields:
 - `slug`
 - `title`
 - `genre`
-- `price_eur`
+- `price_usd`
 - `rating`
 - `badge`
 - `featured`

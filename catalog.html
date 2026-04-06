@@ -8,7 +8,7 @@
       name="description"
       content="Browse the Smooth Samples catalog by genre, format, and bundle type."
     />
-    <link rel="stylesheet" href="./styles.css?v=20260405-2" />
+    <link rel="stylesheet" href="./styles.css?v=20260406-2" />
   </head>
   <body class="page-catalog">
     <div class="site-shell" id="top">
@@ -37,11 +37,11 @@
             <a href="#catalog-help">Help</a>
             <a href="#catalog-help">Register</a>
             <a href="#catalog-help">Login</a>
-            <a href="#catalog-help">EUR €</a>
+            <a href="#catalog-help">USD $</a>
           </div>
 
           <a class="cart-pill" href="./cart.html" aria-label="View cart">
-            <span class="cart-total">€0.00</span>
+            <span class="cart-total">$0.00</span>
             <span class="cart-meta">0 items</span>
             <strong>Cart</strong>
           </a>
@@ -63,8 +63,9 @@
 
         <div class="header-tools">
           <nav class="site-nav" aria-label="Main navigation">
+            <a href="./index.html">Home</a>
             <a class="is-current" href="./catalog.html" aria-current="page">Browse</a>
-            <a href="./catalog.html#catalog-genres">Genres</a>
+            <a href="./catalog.html#catalog-grid">Genres</a>
             <a href="./catalog.html#catalog-grid">Formats</a>
             <a href="./index.html#bundles">Bundles</a>
             <a href="./index.html#preview-experience">Previews</a>
@@ -82,78 +83,54 @@
         </nav>
 
         <section class="section catalog-hero">
-          <div class="section-heading">
-            <p class="eyebrow">Catalog</p>
-            <h1 class="catalog-title">Find packs by genre, mood, and format.</h1>
-            <p>
-              This is the first dedicated catalog page for Smooth Samples. It is
-              designed to feel more like a real storefront with filters,
-              categories, and a product grid.
-            </p>
+          <div class="catalog-intro">
+            <div class="section-heading">
+              <p class="eyebrow">Catalog</p>
+              <h1 class="catalog-title">Browse the catalog like a real sample storefront.</h1>
+              <p>
+                A cleaner product wall, stronger covers, and a faster filter bar
+                so the packs stay the real focus.
+              </p>
+            </div>
+
             <p class="catalog-search-summary" id="catalog-search-summary">
               Browse the full catalog and refine by genre or search term.
             </p>
           </div>
 
-          <div class="catalog-jumpbar" aria-label="Catalog quick navigation">
-            <a href="./index.html">Back to Home</a>
-            <a href="#catalog-genres">Jump to Genres</a>
-            <a href="#catalog-grid">View All Packs</a>
-          </div>
-
-          <div class="catalog-layout">
-            <aside class="catalog-sidebar" id="catalog-genres" aria-label="Catalog filters">
-              <div class="sidebar-card">
-                <p class="panel-label">Genres</p>
-                <div class="sidebar-list" id="catalog-genre-list">
-                  <a href="#catalog-grid">Loading genres...</a>
-                </div>
+          <div class="catalog-main catalog-main-storefront">
+            <div class="catalog-storefront-toolbar" aria-label="Catalog controls">
+              <div class="filter-chips filter-chips-storefront" id="catalog-filter-chips">
+                <button class="filter-chip is-active" type="button" data-genre="">All</button>
               </div>
 
-              <div class="sidebar-card">
-                <p class="panel-label">Formats</p>
-                <div class="sidebar-tags">
-                  <span>WAV</span>
-                  <span>MIDI</span>
-                  <span>Stems</span>
-                  <span>Presets</span>
-                  <span>Bundles</span>
-                </div>
-              </div>
-
-              <div class="sidebar-card">
-                <p class="panel-label">Quick filters</p>
-                <div class="sidebar-tags">
-                  <span>Best sellers</span>
-                  <span>New</span>
-                  <span>Editor picks</span>
-                  <span>Budget</span>
-                </div>
-              </div>
-            </aside>
-
-            <div class="catalog-main">
-              <div class="catalog-controls" aria-label="Catalog controls">
-                <div class="filter-chips" id="catalog-filter-chips">
-                  <button class="filter-chip is-active" type="button" data-genre="">All</button>
-                </div>
-                <div class="sort-control">
-                  <label for="catalog-sort">Sort by</label>
+              <div class="catalog-results-meta">
+                <div class="sort-control sort-control-storefront">
+                  <label for="catalog-sort">Sort</label>
                   <select id="catalog-sort" name="catalog-sort">
-                    <option>Best Sellers</option>
                     <option>Newest</option>
+                    <option>Best Sellers</option>
                     <option>Price: Low to High</option>
                     <option>Editor Picks</option>
                   </select>
                 </div>
-              </div>
 
-              <div class="catalog-grid-page" id="catalog-grid">
-                <article class="pack-card pack-card-status">
-                  <h3>Loading catalog...</h3>
-                  <p>The catalog is now connected to the backend API.</p>
-                </article>
+                <p class="catalog-results-count" id="catalog-results-count">Loading results...</p>
+
+                <div class="catalog-pagination" aria-label="Catalog pages">
+                  <span class="is-active">1</span>
+                  <span>2</span>
+                  <span>3</span>
+                  <span>4</span>
+                </div>
               </div>
+            </div>
+
+            <div class="catalog-grid-page catalog-grid-storefront" id="catalog-grid">
+              <article class="pack-card pack-card-status">
+                <h3>Loading catalog...</h3>
+                <p>The catalog is now connected to the backend API.</p>
+              </article>
             </div>
           </div>
         </section>
@@ -179,6 +156,6 @@
     <script src="./assets/js/store-api.js"></script>
     <script src="./assets/js/cart.js"></script>
     <script src="./assets/js/search-ui.js?v=20260405-2"></script>
-    <script src="./assets/js/catalog.js"></script>
+    <script src="./assets/js/catalog.js?v=20260406-2"></script>
   </body>
 </html>

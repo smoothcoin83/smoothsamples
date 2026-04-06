@@ -5,9 +5,27 @@
   const STORAGE_KEY = "smooth-samples-cart-v1";
   const VAT_RATE = 0.22;
 
+  function normalizeItem(item) {
+    if (!item || typeof item !== "object") return null;
+
+    const priceUsd = Number(
+      item.price_usd ?? item.price_eur ?? item.price ?? 0
+    );
+
+    return {
+      ...item,
+      price_usd: Number.isFinite(priceUsd) ? priceUsd : 0,
+      quantity: Math.max(1, Number(item.quantity || 1)),
+    };
+  }
+
   function readCart() {
     try {
-      return JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]");
+      const items = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]")
+        .map(normalizeItem)
+        .filter(Boolean);
+      writeCart(items);
+      return items;
     } catch (error) {
       return [];
     }
@@ -21,7 +39,7 @@
     return items.reduce(
       (accumulator, item) => {
         accumulator.items += item.quantity;
-        accumulator.total += item.price_eur * item.quantity;
+        accumulator.total += item.price_usd * item.quantity;
         return accumulator;
       },
       { items: 0, total: 0 }
@@ -51,7 +69,7 @@
       const totalNode = pill.querySelector(".cart-total");
       const metaNode = pill.querySelector(".cart-meta");
 
-      if (totalNode) totalNode.textContent = `€${summary.total.toFixed(2)}`;
+      if (totalNode) totalNode.textContent = `$${summary.total.toFixed(2)}`;
       if (metaNode) metaNode.textContent = `${summary.items} item${summary.items === 1 ? "" : "s"}`;
       pill.setAttribute("href", "./cart.html");
       pill.setAttribute("aria-label", `View cart with ${summary.items} item${summary.items === 1 ? "" : "s"}`);
@@ -123,7 +141,7 @@
     return {
       slug,
       title,
-      price_eur: price,
+      price_usd: price,
       genre: button.dataset.packGenre || "",
       href: button.dataset.packHref || api.productHref(slug, title),
       cover_image: button.dataset.packCover || "",
